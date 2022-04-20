@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+import os
 
 class PythonOrgSearch(unittest.TestCase):
     def setUp(self):
@@ -22,6 +23,8 @@ class PythonOrgSearch(unittest.TestCase):
         chrome_options.add_argument('--disable-setuid-sandbox')
         # s = Service(executable_path=ChromeDriverManager().install())
         #s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
+        cwd = os.getcwd()
+        print("Directory***************************" + cwd )
         path = "/AVAXDEV_SHAHWAR/chromedriver"
         # s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
         self.driver = webdriver.Chrome(path, options=chrome_options)
