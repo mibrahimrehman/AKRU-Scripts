@@ -25,7 +25,7 @@ class PythonOrgSearch(unittest.TestCase):
         #s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
         cwd = os.getcwd()
         print("Directory***************************" + cwd )
-        path = "/AVAXDEV_SHAHWAR/chromedriver"
+        path = "chromedriver"
         # s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
         self.driver = webdriver.Chrome(path, options=chrome_options)
 
