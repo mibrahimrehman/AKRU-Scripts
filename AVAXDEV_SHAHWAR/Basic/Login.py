@@ -36,6 +36,7 @@ class PythonOrgSearch(unittest.TestCase):
         email = "ds_automation_seller@yopmail.com"
         wait = WebDriverWait(self.driver, 50)
 
+        #this is comment 
         self.driver.get(url)
         print('SUCCESS: "'+url+'" saved in webdriver')
 
