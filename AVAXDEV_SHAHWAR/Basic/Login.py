@@ -21,9 +21,10 @@ class PythonOrgSearch(unittest.TestCase):
         chrome_options.add_argument('--start-maximized')
         chrome_options.add_argument('--disable-setuid-sandbox')
         # s = Service(executable_path=ChromeDriverManager().install())
-        s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
+        #s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
+        path = "/AVAXDEV_SHAHWAR/chromedriver"
         # s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
-        self.driver = webdriver.Chrome(service=s, options=chrome_options)
+        self.driver = webdriver.Chrome(path, options=chrome_options)
 
     def test_search_in_python_org(self):
         self.driver.maximize_window()
