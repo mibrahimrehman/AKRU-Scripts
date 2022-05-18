@@ -18,8 +18,9 @@ class PythonOrgSearch(unittest.TestCase):
         chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
         chrome_options.add_argument('--no-sandbox')
         # s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
-        s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
-        self.driver = webdriver.Chrome(service=s, options=chrome_options)
+        #s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
+        PATH = "chromedriver"
+        self.driver = webdriver.Chrome(PATH, options=chrome_options)
 
     def test_search_in_python_org(self):
         self.driver.maximize_window()

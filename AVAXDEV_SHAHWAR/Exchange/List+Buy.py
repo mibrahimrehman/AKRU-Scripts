@@ -12,34 +12,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
-        #WINDOW_SIZE = "1920,1080"
-
-
-        PATH = "E:\chromedriver"
-
-        chrome_options = webdriver.ChromeOptions(); 
-        chrome_options.add_experimental_option("excludeSwitches", ['enable-automation']);
-
-        #self.driver = webdriver.Chrome(PATH)
-        #driver.maximize_window()
-
-
-
+        WINDOW_SIZE = "1920,1080"
         chrome_options = Options()
         #chrome_options.add_argument("--headless")
-        # chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
+        chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
         chrome_options.add_argument('--no-sandbox')
-        s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
-        # s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
-        self.driver = webdriver.Chrome(PATH , options=chrome_options )
-
-        # PATH = "E:\chromedriver"
-
-        # chrome_options = webdriver.ChromeOptions(); 
-        # chrome_options.add_experimental_option("excludeSwitches", ['enable-automation']);
-
-        # self.driver = webdriver.Chrome(PATH)
-        self.driver.maximize_window()
+        # s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
+        #s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
+        PATH = "chromedriver"
+        self.driver = webdriver.Chrome(PATH, options=chrome_options)
 
     def test_search_in_python_org(self):
         self.driver.maximize_window()
