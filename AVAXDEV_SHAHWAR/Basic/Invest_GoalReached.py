@@ -19,7 +19,7 @@ class PythonOrgSearch(unittest.TestCase):
         #comment at 19
         #s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
         # s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
-        PATH = "E:\chromedriver"
+        PATH = "chromedriver"
         self.driver = webdriver.Chrome(PATH , options=chrome_options)
 
     def test_search_in_python_org(self):
