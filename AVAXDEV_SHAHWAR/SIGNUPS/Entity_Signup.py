@@ -266,7 +266,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             CertificateOfFormationToBeUploaded=self.driver.find_element(By.XPATH, '//div[1]/input[@type="file"]')
-            filepath = "blank.pdf"
+            filepath = os.path.abspath("blank.pdf")
             CertificateOfFormationToBeUploaded.send_keys(filepath)
             # CertificateOfFormationToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Certificate of Formation is uploaded')
@@ -388,7 +388,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             RepPersonalIDToBeUploaded=self.driver.find_element(By.XPATH, '//div[3]/input[@type="file"]')
-            pngfilepath = "blank.png"
+            pngfilepath = os.path.abspath("blank.png")
             RepPersonalIDToBeUploaded.send_keys(pngfilepath)
             # RepPersonalIDToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.png")
             print('SUCCESS: Representative Personal Identification is uploaded')
