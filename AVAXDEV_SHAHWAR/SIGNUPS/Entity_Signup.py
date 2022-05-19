@@ -266,8 +266,8 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             CertificateOfFormationToBeUploaded=self.driver.find_element(By.XPATH, '//div[1]/input[@type="file"]')
-            print("PATH OF CURRENT DIRECTORY" + os.getcwd())
-            CertificateOfFormationToBeUploaded.send_keys("/blank.pdf")
+            filepath = "blank.pdf"
+            CertificateOfFormationToBeUploaded.send_keys(filepath)
             # CertificateOfFormationToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Certificate of Formation is uploaded')
         except:
@@ -276,7 +276,6 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             OperatingAgreementToBeUploaded=self.driver.find_element(By.XPATH, '//div[2]/input[@type="file"]')
-            filepath = "blank.pdf"
             OperatingAgreementToBeUploaded.send_keys(filepath)
             # OperatingAgreementToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Operating Agreement is uploaded')
@@ -286,7 +285,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             BusinessIddocToBeUploaded=self.driver.find_element(By.XPATH, '//div[4]/input[@type="file"]')
-            BusinessIddocToBeUploaded.send_keys(r"blank.pdf")
+            BusinessIddocToBeUploaded.send_keys(filepath)
             # BusinessIddocToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Business Identification Document is uploaded')
         except:
@@ -389,7 +388,8 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             RepPersonalIDToBeUploaded=self.driver.find_element(By.XPATH, '//div[3]/input[@type="file"]')
-            RepPersonalIDToBeUploaded.send_keys(r"blank.png")
+            pngfilepath = "blank.png"
+            RepPersonalIDToBeUploaded.send_keys(pngfilepath)
             # RepPersonalIDToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.png")
             print('SUCCESS: Representative Personal Identification is uploaded')
         except:
