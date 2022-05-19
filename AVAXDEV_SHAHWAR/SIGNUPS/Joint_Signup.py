@@ -536,7 +536,7 @@ class PythonOrgSearch(unittest.TestCase):
             print('\nFAILED: Success toaster could not be appeared. Instead toaster with the text: "'+LoginToasterMessage.text+'" appeared\n')
             raise Exception
 
-        print('\nSUCCESSFULLY SINGED UP JOINT ACCOUNT\n')
+        print('\nSUCCESSFULLY SINGED UP JOINT ACCOUNT\n' + "Email: " + email)
 
     def tearDown(self):
         self.driver.quit()
