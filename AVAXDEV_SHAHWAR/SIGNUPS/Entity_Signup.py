@@ -197,7 +197,7 @@ class PythonOrgSearch(unittest.TestCase):
         self.driver.switch_to.window(self.driver.window_handles[0])
         self.driver.close()
         self.driver.switch_to.window(self.driver.window_handles[0])
-        time.sleep(50)
+        time.sleep(1)
 
         try:
             EntityNameToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,'//input[@name="name"]')))
@@ -265,7 +265,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             CertificateOfFormationToBeUploaded=self.driver.find_element(By.XPATH, '//div[1]/input[@type="file"]')
-            CertificateOfFormationToBeUploaded.send_keys("/var/lib/jenkins/script/blank.pdf")
+            CertificateOfFormationToBeUploaded.send_keys(r"blank.pdf")
             # CertificateOfFormationToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Certificate of Formation is uploaded')
         except:
@@ -274,7 +274,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             OperatingAgreementToBeUploaded=self.driver.find_element(By.XPATH, '//div[2]/input[@type="file"]')
-            OperatingAgreementToBeUploaded.send_keys("/var/lib/jenkins/script/blank.pdf")
+            OperatingAgreementToBeUploaded.send_keys(r"blank.pdf")
             # OperatingAgreementToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Operating Agreement is uploaded')
         except:
@@ -283,7 +283,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             BusinessIddocToBeUploaded=self.driver.find_element(By.XPATH, '//div[4]/input[@type="file"]')
-            BusinessIddocToBeUploaded.send_keys("/var/lib/jenkins/script/blank.pdf")
+            BusinessIddocToBeUploaded.send_keys(r"blank.pdf")
             # BusinessIddocToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Business Identification Document is uploaded')
         except:
@@ -386,7 +386,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             RepPersonalIDToBeUploaded=self.driver.find_element(By.XPATH, '//div[3]/input[@type="file"]')
-            RepPersonalIDToBeUploaded.send_keys("/var/lib/jenkins/script/blank.png")
+            RepPersonalIDToBeUploaded.send_keys(r"blank.png")
             # RepPersonalIDToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.png")
             print('SUCCESS: Representative Personal Identification is uploaded')
         except:
@@ -486,9 +486,9 @@ class PythonOrgSearch(unittest.TestCase):
             print('No toaster appeared')
             
         try:
-            time.sleep(30)
+            time.sleep(3)
             self.driver.refresh()
-            time.sleep(20)
+            time.sleep(2)
             skipAddingBankButton=wait.until(EC.element_to_be_clickable((By.XPATH,'//button[@name="skipButton"][text()="Skip"]')))
             skipAddingBankButton.click()
             print('SUCCESS: Skip button to skip adding banks is clicked')
