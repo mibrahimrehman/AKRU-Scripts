@@ -37,6 +37,7 @@ class PythonOrgSearch(unittest.TestCase):
         fnameRep = names.get_first_name()
         lnameRep = names.get_last_name()
         emailRep = fnameRep+lnameRep+'123@yopmail.com'
+        filepath = "blank.pdf"
 
         action = ActionChains (self.driver)
         def clearTextField():
@@ -267,7 +268,7 @@ class PythonOrgSearch(unittest.TestCase):
         try:
             CertificateOfFormationToBeUploaded=self.driver.find_element(By.XPATH, '//div[1]/input[@type="file"]')
             print("PATH OF CURRENT DIRECTORY" + os.getcwd())
-            CertificateOfFormationToBeUploaded.send_keys("blank.pdf")
+            CertificateOfFormationToBeUploaded.send_keys(filepath)
             # CertificateOfFormationToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Certificate of Formation is uploaded')
         except:
