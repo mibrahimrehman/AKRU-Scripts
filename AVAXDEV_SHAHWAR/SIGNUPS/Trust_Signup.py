@@ -9,6 +9,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
+import os
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -265,7 +266,8 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             TrustAgreementToBeUploaded=self.driver.find_element(By.XPATH, '//div[1]/input[@type="file"]')
-            TrustAgreementToBeUploaded.send_keys("/var/lib/jenkins/script/blank.pdf")
+            filepath = os.path.abspath("blank.pdf")
+            TrustAgreementToBeUploaded.send_keys(filepath)
             # TrustAgreementToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Trust agreement is uploaded')
         except:
@@ -274,7 +276,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             BusinessIDdocToBeUploaded=self.driver.find_element(By.XPATH, '//div[3]/input[@type="file"]')
-            BusinessIDdocToBeUploaded.send_keys("/var/lib/jenkins/script/blank.pdf")
+            BusinessIDdocToBeUploaded.send_keys(filepath)
             # BusinessIDdocToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Business Identification Document is uploaded')
         except:

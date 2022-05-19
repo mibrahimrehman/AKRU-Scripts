@@ -632,7 +632,8 @@ class PythonOrgSearch(unittest.TestCase):
         print('\nSUCCESSFULLY SINGED UP ENTITY ACCOUNT\n')
 
     def tearDown(self):
-        self.driver.quit()
+        #self.driver.quit()
+        time.sleep(100)
 
 if __name__ == "__main__":
     unittest.main()
