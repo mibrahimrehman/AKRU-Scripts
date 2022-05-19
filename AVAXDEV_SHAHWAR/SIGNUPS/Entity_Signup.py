@@ -1,3 +1,4 @@
+from cgi import test
 import unittest
 from selenium import webdriver
 import time
@@ -10,6 +11,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 import os
+from PIL import Image
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -44,6 +46,7 @@ class PythonOrgSearch(unittest.TestCase):
             action.send_keys('a').perform()
             action.key_up(Keys.COMMAND).perform()
             action.send_keys(Keys.BACK_SPACE).perform()
+
 
         self.driver.get(url)
         print('SUCCESS: "'+url+'" saved in webdriver')
@@ -105,6 +108,7 @@ class PythonOrgSearch(unittest.TestCase):
         except:
             print("FAILED: Last name could not be entered")
             raise Exception
+            
 
         try:
             emailToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,'//input[@name = "email"]')))
@@ -628,10 +632,15 @@ class PythonOrgSearch(unittest.TestCase):
         else:
             print('\nFAILED: Success toaster could not be appeared. Instead toaster with the text: "'+LoginToasterMessage.text+'" appeared\n')
             raise Exception
+            
 
         print('\nSUCCESSFULLY SINGED UP ENTITY ACCOUNT\n')
 
     def tearDown(self):
+        self.driver.save_screenshot("ss.png")
+        screenshot = Image.open()
+        screenshot.show()
+        time.sleep(3)
         self.driver.quit()
 
 if __name__ == "__main__":
