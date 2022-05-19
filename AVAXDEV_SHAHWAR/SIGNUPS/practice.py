@@ -267,7 +267,7 @@ class PythonOrgSearch(unittest.TestCase):
         try:
             CertificateOfFormationToBeUploaded=self.driver.find_element(By.XPATH, '//div[1]/input[@type="file"]')
             print("PATH OF CURRENT DIRECTORY" + os.getcwd())
-            CertificateOfFormationToBeUploaded.send_keys("/blank.pdf")
+            CertificateOfFormationToBeUploaded.send_keys("blank.pdf")
             # CertificateOfFormationToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Certificate of Formation is uploaded')
         except:
