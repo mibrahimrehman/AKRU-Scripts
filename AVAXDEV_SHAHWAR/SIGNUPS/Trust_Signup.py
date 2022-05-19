@@ -380,7 +380,8 @@ class PythonOrgSearch(unittest.TestCase):
         try:
             RepPersonalIDToBeUploaded=self.driver.find_element(By.XPATH, '//div[19]//input[@type="file"]')
             # RepPersonalIDToBeUploaded.send_keys("/var/lib/jenkins/script/blank.png")
-            RepPersonalIDToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.png")
+            pngfilepath = os.path.abspath("blank.png")
+            RepPersonalIDToBeUploaded.send_keys(pngfilepath)
             print('SUCCESS: Representative Personal Identification is uploaded')
         except:
             print("FAILED: Representative Personal Identification could not be uploaded")
