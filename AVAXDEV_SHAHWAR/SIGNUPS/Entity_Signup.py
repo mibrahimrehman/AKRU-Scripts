@@ -276,7 +276,8 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             OperatingAgreementToBeUploaded=self.driver.find_element(By.XPATH, '//div[2]/input[@type="file"]')
-            OperatingAgreementToBeUploaded.send_keys(r"/blank.pdf")
+            filepath = "blank.pdf"
+            OperatingAgreementToBeUploaded.send_keys(filepath)
             # OperatingAgreementToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Operating Agreement is uploaded')
         except:
