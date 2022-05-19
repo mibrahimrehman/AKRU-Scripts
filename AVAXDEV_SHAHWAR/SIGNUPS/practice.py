@@ -1,3 +1,4 @@
+from msilib.schema import File
 import unittest
 from selenium import webdriver
 import time
@@ -37,7 +38,6 @@ class PythonOrgSearch(unittest.TestCase):
         fnameRep = names.get_first_name()
         lnameRep = names.get_last_name()
         emailRep = fnameRep+lnameRep+'123@yopmail.com'
-        filepath = "blank.pdf"
 
         action = ActionChains (self.driver)
         def clearTextField():
@@ -268,7 +268,8 @@ class PythonOrgSearch(unittest.TestCase):
         try:
             CertificateOfFormationToBeUploaded=self.driver.find_element(By.XPATH, '//div[1]/input[@type="file"]')
             print("PATH OF CURRENT DIRECTORY" + os.getcwd())
-            CertificateOfFormationToBeUploaded.send_keys(filepath)
+            fp = os.path.abspath("blank.pdf")
+            CertificateOfFormationToBeUploaded.send_keys(fp)
             # CertificateOfFormationToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Certificate of Formation is uploaded')
         except:
@@ -277,7 +278,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         try:
             OperatingAgreementToBeUploaded=self.driver.find_element(By.XPATH, '//div[2]/input[@type="file"]')
-            OperatingAgreementToBeUploaded.send_keys(r"/blank.pdf")
+            OperatingAgreementToBeUploaded.send_keys(r"blank")
             # OperatingAgreementToBeUploaded.send_keys("/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/blank.pdf")
             print('SUCCESS: Operating Agreement is uploaded')
         except:
