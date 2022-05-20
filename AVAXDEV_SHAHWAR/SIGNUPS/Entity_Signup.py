@@ -637,6 +637,7 @@ class PythonOrgSearch(unittest.TestCase):
         print('\nSUCCESSFULLY SINGED UP ENTITY ACCOUNT\n')
 
     def tearDown(self):
+        time.sleep(3)
         self.driver.save_screenshot("ss.png")
         screenshot = Image.open("ss.png")
         screenshot.show()
