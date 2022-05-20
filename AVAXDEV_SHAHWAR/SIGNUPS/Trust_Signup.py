@@ -613,6 +613,10 @@ class PythonOrgSearch(unittest.TestCase):
         print('\nSUCCESSFULLY SINGED UP TRUST ACCOUNT\n')
 
     def tearDown(self):
+        self.driver.save_screenshot("ss.png")
+        screenshot = Image.open("ss.png")
+        screenshot.show()
+        time.sleep(3)
         self.driver.quit()
 
 if __name__ == "__main__":

@@ -638,7 +638,7 @@ class PythonOrgSearch(unittest.TestCase):
 
     def tearDown(self):
         self.driver.save_screenshot("ss.png")
-        screenshot = Image.open()
+        screenshot = Image.open("ss.png")
         screenshot.show()
         time.sleep(3)
         self.driver.quit()
