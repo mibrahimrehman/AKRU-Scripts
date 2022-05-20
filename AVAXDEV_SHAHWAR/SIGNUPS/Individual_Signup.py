@@ -448,6 +448,7 @@ class PythonOrgSearch(unittest.TestCase):
         print('\nSUCCESSFULLY SINGED UP INDIVIDUAL ACCOUNT\n' + "Email: " + email)
 
     def tearDown(self):
+        time.sleep(5)
         self.driver.save_screenshot("ss.png")
         screenshot = Image.open()
         screenshot.show()
