@@ -10,6 +10,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 import os
+import os
+from PIL import Image
 
 class PythonOrgSearch(unittest.TestCase):
 
