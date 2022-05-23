@@ -29,7 +29,7 @@ class TestStringMethods(unittest.TestCase):
     
     def test_upper(self):
 
-        print("in test funvtion" + l)
+        print("in test funvtion")
 
 
 
