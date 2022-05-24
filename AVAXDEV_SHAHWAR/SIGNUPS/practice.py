@@ -16,6 +16,7 @@ chrome_options.add_argument('--disable-setuid-sandbox')
 chrome_options.add_argument('--remote-debugging-port=9222')
 chrome_options.add_argument('--disable-dev-shm-using')
         # s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
+        
         #s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
 PATH =  r"C:\Users\Ibrahim\Desktop\Akru script\AVAXDEV_SHAHWAR\SIGNUPS\chromedriver.exe"
 driver = webdriver.Chrome(PATH, options=chrome_options)
