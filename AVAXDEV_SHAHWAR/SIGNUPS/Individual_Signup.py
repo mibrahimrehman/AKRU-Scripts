@@ -1,3 +1,4 @@
+from pickle import FALSE
 import unittest
 from selenium import webdriver
 import time
@@ -11,6 +12,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 import os
 from PIL import Image
+import allure
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -449,9 +451,9 @@ class PythonOrgSearch(unittest.TestCase):
 
     def tearDown(self):
         time.sleep(5)
-        self.driver.save_screenshot("ss.png")
-        screenshot = Image.open("ss.png")
-        screenshot.show()
+        self.driver.save_screenshot("idsig.png")
+        #screenshot = Image.open("idsig.png")
+        allure.attach.file(r"idsig.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
         time.sleep(3)
         self.driver.quit()
 

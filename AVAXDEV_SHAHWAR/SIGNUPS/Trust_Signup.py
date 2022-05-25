@@ -12,6 +12,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import os
 import os
 from PIL import Image
+import allure
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -612,12 +613,11 @@ class PythonOrgSearch(unittest.TestCase):
             print('\nFAILED: Success toaster could not be appeared. Instead toaster with the text: "'+LoginToasterMessage.text+'" appeared\n')
             raise Exception
 
-        print('\nSUCCESSFULLY SINGED UP TRUST ACCOUNT\n')
+        print('\nSUCCESSFULLY SINGED UP TRUST ACCOUNT\n' + "Email: " + email)
 
     def tearDown(self):
-        self.driver.save_screenshot("ss.png")
-        screenshot = Image.open("ss.png")
-        screenshot.show()
+        self.driver.save_screenshot("trustsig.PNG")
+        allure.attach.file(r"trustsig.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
         time.sleep(3)
         self.driver.quit()
 

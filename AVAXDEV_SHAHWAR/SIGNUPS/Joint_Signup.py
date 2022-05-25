@@ -1,3 +1,4 @@
+import imp
 import unittest
 from selenium import webdriver
 import time
@@ -11,6 +12,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 import os
 from PIL import Image
+import allure
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
@@ -540,9 +542,8 @@ class PythonOrgSearch(unittest.TestCase):
         print('\nSUCCESSFULLY SINGED UP JOINT ACCOUNT\n' + "Email: " + email)
 
     def tearDown(self):
-        self.driver.save_screenshot("ss.png")
-        screenshot = Image.open("ss.png")
-        screenshot.show()
+        self.driver.save_screenshot("jointsig.PNG")
+        allure.attach.file(r"jointsig.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
         time.sleep(3)
         self.driver.quit()
 

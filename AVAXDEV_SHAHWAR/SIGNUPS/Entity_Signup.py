@@ -1,4 +1,5 @@
 from cgi import test
+import imp
 import unittest
 from selenium import webdriver
 import time
@@ -12,6 +13,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 import os
 from PIL import Image
+import allure
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -634,13 +636,12 @@ class PythonOrgSearch(unittest.TestCase):
             raise Exception
             
 
-        print('\nSUCCESSFULLY SINGED UP ENTITY ACCOUNT\n')
+        print('\nSUCCESSFULLY SINGED UP ENTITY ACCOUNT\n'  + "Email: " + email)
 
     def tearDown(self):
         time.sleep(3)
-        self.driver.save_screenshot("ss.png")
-        screenshot = Image.open("ss.png")
-        screenshot.show()
+        self.driver.save_screenshot("entsig.PNG")
+        allure.attach.file(r"entsig.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
         time.sleep(3)
         self.driver.quit()
 
