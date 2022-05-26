@@ -1,5 +1,4 @@
-from cgi import test
-import imp
+from pickle import FALSE
 import unittest
 from selenium import webdriver
 import time
@@ -16,7 +15,7 @@ from PIL import Image
 import allure
 
 class PythonOrgSearch(unittest.TestCase):
-
+    
     def setUp(self):
         WINDOW_SIZE = "1920,1080"
         chrome_options = Options()
@@ -495,8 +494,6 @@ class PythonOrgSearch(unittest.TestCase):
             print('No toaster appeared')
             
         try:
-            time.sleep(3)
-            self.driver.refresh()
             time.sleep(2)
             skipAddingBankButton=wait.until(EC.element_to_be_clickable((By.XPATH,'//button[@name="skipButton"][text()="Skip"]')))
             skipAddingBankButton.click()
@@ -584,7 +581,8 @@ class PythonOrgSearch(unittest.TestCase):
             time.sleep(5)
 
             try:
-                self.driver.switch_to.frame('ifmail')
+                wait.until(EC.frame_to_be_available_and_switch_to_it('ifmail'))
+                #self.driver.switch_to.frame('ifmail')
             except:
                 print("FAILED: Could not switch to iframe in YOPMAIL.")
                 raise Exception
