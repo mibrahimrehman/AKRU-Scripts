@@ -1,3 +1,5 @@
+#from lib2to3.pgen2 import driver
+import imp
 import unittest
 from selenium import webdriver
 import time
@@ -8,6 +10,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
+import allure
+import win32ui
+import win32con
+import goto
+#from goto import label
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -29,12 +36,12 @@ class PythonOrgSearch(unittest.TestCase):
         afterLoginURL = 'https://avaxdev.akru.co/dashboard'
         emailseller = "ds_automation_seller@yopmail.com"
         emailbuyer = "ds_automation_buyer@yopmail.com"
-        propertyIDGoalReached = "property6232fcca24186e759830a7bc"
+        propertyIDGoalReached = "property6299b90a6cd03d05b901f8aa"
         AmountOfTokensToBuy = "1"
         PriceOfTokensToBeListedd = "1200"
         QuantityOfTokensToBeListedd = "1"
         PricePerTokenn="1150"
-        token_name = 'AK-EX01'
+        token_name = 'AK-EX03'
     
         self.driver.get(url)
         print('SUCCESS: "'+url+'" saved in webdriver')
@@ -152,12 +159,21 @@ class PythonOrgSearch(unittest.TestCase):
             print('SUCCESS: Toaster Appeared')
         except:
             print('FAILED: Toaster could not be appeared')
+            response = win32ui.MessageBox("Would like to wait more?", "Loading", win32con.MB_YESNOCANCEL)
+            if response == win32con.IDYES:
+                print("yes wait")
+                time.sleep(100)
+            elif response == win32con.IDNO:
+                print("No wait")
+
+
 
         if self.driver.current_url == afterLoginURL:
             print('SUCCESS: SUCCESSFULLY LOGGED IN. New URL is '+ afterLoginURL)
         else:
             print('\nFAILED: Could not login. As dashboard did not appear.\n')
             # print('\nFAILED: Success toaster could not be appeared. Instead toaster with the text: "'+LoginToasterMessage.text+'" appeared\n')
+            
             raise Exception
 
         print('Successfully logged in as: '+emailseller)
@@ -409,9 +425,8 @@ class PythonOrgSearch(unittest.TestCase):
 
         time.sleep(3)
         try:
-            AmountOfTokens=wait.until(EC.element_to_be_clickable((By.ID, 'quantity1')))
-            AmountOfTokens.send_keys(Keys.BACKSPACE)
-            AmountOfTokens.send_keys(AmountOfTokensToBuy)
+            AmountOfTokens=wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@id='quantity1']/parent::span//span[text() = '+']")))
+            AmountOfTokens.click()
             print('SUCCESS: Amount to buy listed tokens is entered: ' + AmountOfTokensToBuy)
         except:
             print('FAILED: Could not enter amount of tokens to buy from listed tokens')
@@ -450,6 +465,7 @@ class PythonOrgSearch(unittest.TestCase):
         except:
             print('FAILED: Could not click Confirm Button while placing counter offer')
             raise Exception
+            
 
         time.sleep(10)
 
@@ -459,10 +475,10 @@ class PythonOrgSearch(unittest.TestCase):
             time.sleep(5)
             print('SUCCESS: Loader Disappeared')
         except:
-            print('FAILED: Loader did not appear or still loading')
+            print('FAILED: Loader did not appear or still loading')            
 
         try:
-            CounterOfferPlacedSuccessfullyToasterMessage = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'Toastify__toast-body')))
+            CounterOfferPlacedSuccessfullyToasterMessage = WebDriverWait(self.driver, 400).until(EC.presence_of_element_located((By.CLASS_NAME, 'Toastify__toast-body')))
             print('SUCCESS: Toaster Appeared')
         except:
             print('FAILED: Toaster could not be appeared')
@@ -472,7 +488,13 @@ class PythonOrgSearch(unittest.TestCase):
             CounterOfferPlacedSuccessfullyToasterMessage.click()
         else:
             print('\nFAILED: Counter offer placed successfully toaster could not be appeared. Instead toaster with the text: "'+CounterOfferPlacedSuccessfullyToasterMessage.text+'" appeared\n')
-            raise Exception
+            response = win32ui.MessageBox("Do you want to retry counter", "Trouble", win32con.MB_YESNO)
+            if response == win32con.IDYES:
+                print("retry from counter")
+                self.driver.refresh()
+            elif response == win32con.IDNO:
+                print("You pressed no")
+                raise Exception
 
         time.sleep(3)
         try:
@@ -652,6 +674,10 @@ class PythonOrgSearch(unittest.TestCase):
         print('\nOFFER ACCEPTED BY THE SELLER\n')
 
     def tearDown(self):
+        time.sleep(3)
+        self.driver.save_screenshot("list+counter+accept.PNG")
+        allure.attach.file(r"list+counter+accept.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
+        time.sleep(3)
         self.driver.quit()
 
 if __name__ == "__main__":
