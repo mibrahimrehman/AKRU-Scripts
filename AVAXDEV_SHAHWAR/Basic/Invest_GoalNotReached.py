@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+import  allure
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -212,6 +213,10 @@ class PythonOrgSearch(unittest.TestCase):
         print('\nSUCCESSFULLY INVESTED IN THE PROPERTY WHOSE GOAL IS NOT REACHED\n')
 
     def tearDown(self):
+        time.sleep(3)
+        self.driver.save_screenshot("invest_goalnotreached.PNG")
+        allure.attach.file(r"invest_goalnotreached.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
+        time.sleep(3)
         self.driver.quit()
 
 if __name__ == "__main__":

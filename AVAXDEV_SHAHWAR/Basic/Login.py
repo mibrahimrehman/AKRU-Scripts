@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import os
+import allure
 
 class PythonOrgSearch(unittest.TestCase):
     def setUp(self):
@@ -162,6 +163,10 @@ class PythonOrgSearch(unittest.TestCase):
             raise Exception
 
     def tearDown(self):
+        time.sleep(3)
+        self.driver.save_screenshot("login.PNG")
+        allure.attach.file(r"login.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
+        time.sleep(3)
         self.driver.quit()
 
 if __name__ == "__main__":

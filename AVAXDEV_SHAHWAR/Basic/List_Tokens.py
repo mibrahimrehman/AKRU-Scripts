@@ -1,4 +1,5 @@
 
+import imp
 import unittest
 from selenium import webdriver
 import time
@@ -9,6 +10,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
+import allure
 
 class PythonOrgSearch(unittest.TestCase): 
 
@@ -256,7 +258,10 @@ class PythonOrgSearch(unittest.TestCase):
         print('\nSUCCESSFULLY LISTED TOKENS\n')
 
     def tearDown(self):
+        time.sleep(3)
+        self.driver.save_screenshot("list_token.PNG")
+        allure.attach.file(r"list_token.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
+        time.sleep(3)
         self.driver.quit()
-
 if __name__ == "__main__":
     unittest.main()

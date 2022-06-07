@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
+import allure
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -29,13 +30,13 @@ class PythonOrgSearch(unittest.TestCase):
         afterLoginURL = 'https://avaxdev.akru.co/dashboard'
         emailseller = "ds_automation_seller@yopmail.com"
         emailbuyer = "ds_automation_buyer@yopmail.com"
-        propertyIDGoalReached = "property6232fcca24186e759830a7bc"
+        propertyIDGoalReached = "property6299b90a6cd03d05b901f8aa"
         AmountOfTokensToBuy = "1"
         PriceOfTokensToBeListedd = "1200"
         QuantityOfTokensToBeListedd = "1"
         PricePerTokenn="1150"
         AmountForCounterBackk = "1170"
-        token_name = 'AK-EX01'
+        token_name = 'AK-EX03'
     
         self.driver.get(url)
         print('SUCCESS: "'+url+'" saved in webdriver')
@@ -413,9 +414,8 @@ class PythonOrgSearch(unittest.TestCase):
 
         time.sleep(3)
         try:
-            AmountOfTokens=wait.until(EC.element_to_be_clickable((By.ID, 'quantity1')))
-            AmountOfTokens.send_keys(Keys.BACKSPACE)
-            AmountOfTokens.send_keys(AmountOfTokensToBuy)
+            AmountOfTokens=wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@id='quantity1']/parent::span//span[text() = '+']")))
+            AmountOfTokens.click()
             print('SUCCESS: Amount to buy listed tokens is entered: ' + AmountOfTokensToBuy)
         except:
             print('FAILED: Could not enter amount of tokens to buy from listed tokens')
@@ -852,6 +852,10 @@ class PythonOrgSearch(unittest.TestCase):
         print('\nOFFER ACCEPTED BY THE BUYER\n')
 
     def tearDown(self):
+        time.sleep(3)
+        self.driver.save_screenshot("list+counter+counter+accept.PNG")
+        allure.attach.file(r"list+counter+counter+accept.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
+        time.sleep(3)
         self.driver.quit()
 
 if __name__ == "__main__":
