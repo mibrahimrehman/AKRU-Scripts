@@ -31,11 +31,11 @@ class PythonOrgSearch(unittest.TestCase):
         afterLoginURL = 'https://avaxdev.akru.co/dashboard'
         emailseller = "ds_automation_seller@yopmail.com"
         emailbuyer = "ds_automation_buyer@yopmail.com"
-        propertyIDGoalReached = "property6232fcca24186e759830a7bc"
+        propertyIDGoalReached = "property6299b90a6cd03d05b901f8aa"
         AmountOfTokensToBuy = "1"
         PriceOfTokensToBeListedd = "1200"
         QuantityOfTokensToBeListedd = "1"
-        token_name = 'AK-EX01'
+        token_name = 'AK-EX03'
 
         self.driver.get(url)
         print('SUCCESS: "'+url+'" saved in webdriver')
