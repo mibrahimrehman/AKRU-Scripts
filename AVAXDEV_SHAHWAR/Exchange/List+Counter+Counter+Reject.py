@@ -816,6 +816,7 @@ class PythonOrgSearch(unittest.TestCase):
             raise Exception
 
         self.driver.refresh()
+        #wait
         time.sleep(10)
 
         try:

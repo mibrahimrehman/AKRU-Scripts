@@ -319,6 +319,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         time.sleep(3)
         magicNextButton = wait.until(EC.visibility_of_element_located((By.ID, "navbar-magic-next")))
+        #magic next button
         if magicNextButton:
             magicNextButton.click()
             print('SUCCESS: Magic next button clicked')

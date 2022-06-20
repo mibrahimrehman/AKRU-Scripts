@@ -1094,6 +1094,7 @@ class PythonOrgSearch(unittest.TestCase):
         time.sleep(10)
 
         Logout = False
+        #logout
         try:
             LogoutIcon=wait.until(EC.visibility_of_element_located((By.ID, "Path_679")))
             if(LogoutIcon):
