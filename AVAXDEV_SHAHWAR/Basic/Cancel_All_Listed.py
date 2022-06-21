@@ -28,7 +28,7 @@ class PythonOrgSearch(unittest.TestCase):
         actions = ActionChains(self.driver)
         url = "https://avaxdev.akru.co"
         afterLoginURL = 'https://avaxdev.akru.co/dashboard'
-        email = "ds_automation_seller@yopmail.com"
+        email = "ib_automation_seller@yopmail.com"
         wait = WebDriverWait(self.driver, 10)
 
         self.driver.get(url)

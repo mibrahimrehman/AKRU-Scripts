@@ -33,7 +33,7 @@ class PythonOrgSearch(unittest.TestCase):
         self.driver.maximize_window()
         url = "https://avaxdev.akru.co"
         afterLoginURL = 'https://avaxdev.akru.co/dashboard'
-        email = "ds_automation_seller@yopmail.com"
+        email = "ib_automation_seller@yopmail.com"
         wait = WebDriverWait(self.driver, 50)
 
         #comment change

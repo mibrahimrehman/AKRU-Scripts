@@ -27,10 +27,10 @@ class PythonOrgSearch(unittest.TestCase):
         self.driver.maximize_window()
         url = "https://avaxdev.akru.co"
         afterLoginURL = 'https://avaxdev.akru.co/dashboard'
-        email = "ds_automation_seller@yopmail.com"
-        propertyIDGoalReached = "property6232fcca24186e759830a7bc"
+        email = "ib_automation_seller@yopmail.com"
+        propertyIDGoalReached = "property6299b90a6cd03d05b901f8aa"
         AmountOfTokensToBuy = "1"
-        propertyToken = 'AK-EX01'
+        propertyToken = 'AK-EX03'
         wait = WebDriverWait(self.driver, 120)
 
         self.driver.get(url)

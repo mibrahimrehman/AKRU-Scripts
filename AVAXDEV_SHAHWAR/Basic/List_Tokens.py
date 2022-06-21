@@ -33,8 +33,8 @@ class PythonOrgSearch(unittest.TestCase):
         actions = ActionChains(self.driver)
         url = "https://avaxdev.akru.co"
         afterLoginURL = 'https://avaxdev.akru.co/dashboard'
-        email = "ds_automation_seller@yopmail.com"
-        TokenSymbol = 'AK-EX01'
+        email = "ib_automation_seller@yopmail.com"
+        TokenSymbol = 'AK-EX03'
         PriceOfTokensToBeListedd = "1200"
         QuantityOfTokensToBeListedd = "1"
         wait = WebDriverWait(self.driver, 100)
