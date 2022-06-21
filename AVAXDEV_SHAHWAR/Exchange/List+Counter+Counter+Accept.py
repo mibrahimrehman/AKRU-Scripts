@@ -28,8 +28,8 @@ class PythonOrgSearch(unittest.TestCase):
         actions = ActionChains(self.driver)
         url = "https://avaxdev.akru.co"
         afterLoginURL = 'https://avaxdev.akru.co/dashboard'
-        emailseller = "ds_automation_seller@yopmail.com"
-        emailbuyer = "ds_automation_buyer@yopmail.com"
+        emailseller = "ib_automation_seller@yopmail.com"
+        emailbuyer = "ib_automation_buyer@yopmail.com"
         propertyIDGoalReached = "property6299b90a6cd03d05b901f8aa"
         AmountOfTokensToBuy = "1"
         PriceOfTokensToBeListedd = "1200"
