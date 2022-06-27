@@ -18,15 +18,23 @@ class PythonOrgSearch(unittest.TestCase):
         chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
         chrome_options.add_argument('--no-sandbox')
         PATH = "chromedriver"
+
         # s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
         self.driver = webdriver.Chrome(PATH, options=chrome_options)
 
     def test_search_in_python_org(self):
         self.driver.maximize_window()
+        self.driver.get('chrome://settings/clearBrowserData')
+        time.sleep(10)
+        self.driver.find_element_by_xpath("//settings-ui").send_keys(Keys.ENTER)
+        #keyboard.send("Enter")
+
+        self.driver.delete_all_cookies()
+
         url = "https://avaxdev.akru.co"
         afterLoginURL = 'https://avaxdev.akru.co/dashboard'
         email = "ib_automation_seller@yopmail.com"
-        propertyIDGoalNotReached = "property623306a224186e759830ac5c"
+        propertyIDGoalNotReached = "property62b565f5659bb93d76ad0d68"
         AmountOfTokensToBuy = "1"
         wait = WebDriverWait(self.driver, 50)
 

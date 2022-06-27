@@ -99,7 +99,7 @@ class PythonOrgSearch(unittest.TestCase):
         try: 
             #iframvi = wait.until(EC.frame_to_be_available_and_switch_to_it("magic-iframe"))
             #self.driver.switch_to.frame("magic-iframe")
-            print("switch to frame successfully")
+            #print("switch to frame successfully")
             emailsent = wait.until(EC.visibility_of_element_located((By.XPATH, "//body[@class='modal-open']" )))
             print("'SUCCESS: Email send successfully")
         except:
