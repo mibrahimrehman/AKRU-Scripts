@@ -487,20 +487,69 @@ class PythonOrgSearch(unittest.TestCase):
             print("FAILED: Continue button could not be clicked after filling the form on step 2")
             raise Exception
 
+        
+        
         try:
-            ToasterMessageAfterStep2 = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'Toastify__toast-body')))
-            print('SUCCESS: Toaster Appeared having text: "'+ToasterMessageAfterStep2.text+'"\n')
+            stateToBeSelected=wait.until(EC.element_to_be_clickable((By.XPATH,'//div[@id="investor-purpose"]')))
+            stateToBeSelected.click()
+            for option in self.driver.find_elements(By.XPATH, '//li[@data-value="capitalAppreciation"]'):
+                #if option.text == 'Ohio'
+                if True:
+                    option.click()
+                    break
+            print("SUCCESS: investor purpose , Capital Appreciation Supported is selected")
         except:
-            print('No toaster appeared')
-            
-        try:
-            time.sleep(2)
-            skipAddingBankButton=wait.until(EC.element_to_be_clickable((By.XPATH,'//button[@name="skipButton"][text()="Skip"]')))
-            skipAddingBankButton.click()
-            print('SUCCESS: Skip button to skip adding banks is clicked')
-        except:
-            print("FAILED: Skip button to skip adding banks could not be clicked")
+            print("FAILED: investor purpose , Capital Appreciation Supported is not selected")
             raise Exception
+    
+        
+        
+        try:
+            stateToBeSelected=wait.until(EC.element_to_be_clickable((By.XPATH,'//div[@id="isTradingLowSecurities"]')))
+            stateToBeSelected.click()
+            for option in self.driver.find_elements(By.XPATH, '//li[@data-value="true"]'):
+                #if option.text == 'Ohio'
+                if True:
+                    option.click()
+                    break
+            print("SUCCESS: Low trade volume , yes is selected")
+        except:
+            print("FAILED: Low trade volume , yes is not selected")
+            raise Exception
+
+
+        try:
+            stateToBeSelected=wait.until(EC.element_to_be_clickable((By.XPATH,'//select[@name="employmentStatus"]')))
+            stateToBeSelected.click()
+            for option in self.driver.find_elements(By.XPATH, '//select[@name="employmentStatus"]//option[@value="unemployed"]'):
+                #if option.text == 'Ohio'
+                if True:
+                    option.click()
+                    break
+            print("SUCCESS: Employement status , unemployed is selected")
+        except:
+            print("FAILED: Employement status , unemployed is not selected")
+            raise Exception
+        
+
+        try:
+            skipAddingBankButton=wait.until(EC.visibility_of_element_located((By.XPATH,'//button[text()="Next"]')))
+            skipAddingBankButton.click()
+            print('SUCCESS: Next button of account detail is clicked')
+        except:
+            print("FAILED:  Next button of account detail could not be clicked")
+            raise Exception
+
+        time.sleep(5)
+
+        
+        # try:
+        #     ToasterMessageAfterStep2 = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'Toastify__toast-body')))
+        #     print('SUCCESS: Toaster Appeared having text: "'+ToasterMessageAfterStep2.text+'"\n')
+        # except:
+        #     print('No toaster appeared')
+            
+    
 
         try:
             checkingAgreement1=wait.until(EC.presence_of_element_located((By.XPATH,'//input[@name="point1"]')))
@@ -535,6 +584,18 @@ class PythonOrgSearch(unittest.TestCase):
             raise Exception
 
         time.sleep(5)
+
+
+        try:
+            esignature=wait.until(EC.presence_of_element_located((By.XPATH,'//input[@name="eSignature"]')))
+            esignature.click()
+            esignature.send_keys(fname + lname)
+            print('SUCCESS: Esignature is signed')
+        except:
+            print("FAILED: Esignature could not be signed")
+            raise Exception
+
+            
         try:
             VerifyInfoButtonAtStep5=wait.until(EC.element_to_be_clickable((By.XPATH,'//button[@class="primary-btn ml-auto d-block"]')))
             VerifyInfoButtonAtStep5.click()
