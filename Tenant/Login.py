@@ -1,3 +1,4 @@
+from collections import abc
 from pickle import FALSE
 import unittest
 from selenium import webdriver
@@ -13,6 +14,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 import os
 from PIL import Image
 import allure
+#import yopmail_login
+from yopmail_login import yopmail
+import variables
+
 
 class PythonOrgSearch(unittest.TestCase):
     
@@ -31,17 +36,11 @@ class PythonOrgSearch(unittest.TestCase):
         self.driver = webdriver.Chrome(PATH, options=chrome_options)
 
     def test_search_in_python_org(self):
-        self.driver.maximize_window()
-        url = "https://avaxdevtenants.akru.co/"
-        fname = names.get_first_name()
-        lname = names.get_last_name()
-        email = fname + lname + '123@yopmail.com'
-        phone_no = '5678956789'
-        fnameRep = names.get_first_name()
-        lnameRep = names.get_last_name()
-        emailRep = fnameRep+lnameRep+'123@yopmail.com'
+        driver = self.driver
+        driver.maximize_window()
+        url = variables.url
 
-        action = ActionChains (self.driver)
+        action = ActionChains (driver)
         def clearTextField():
             action.key_down(Keys.COMMAND).perform()
             action.send_keys('a').perform()
@@ -50,80 +49,84 @@ class PythonOrgSearch(unittest.TestCase):
 
 
         self.driver.get(url)
+        print('SUCCESS: "'+url+'" saved in webdriver')
+        wait = WebDriverWait(self.driver, 120)
 
+        time.sleep(3)
+        try:
+            loginButton=wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,"#navbar-header-sticky-login")))
+            loginButton.click()
+            print('SUCCESS: Get Started button clicked')
+        except:
+            print("FAILED: Get Started button could not be clicked")
+            raise Exception
 
-        log_in = self.driver.find_element(By.CSS_SELECTOR,
-                                 "#navbar-header-sticky-login")
-        log_in.click()
+        try:
+            tenant_portal = wait.until(EC.element_to_be_clickable((By.XPATH,     "//button[. = 'Tenant portal']")))
+            tenant_portal.click()
+            print('SUCCESS: Tenant portal option clicked')
+        except:
+            print("FAILED: Tenant portal option could not be clicked")
+            raise Exception
 
-    # 3. Click 'Tenant portal'
-        tenant_portal = self.driver.find_element(By.XPATH,
-                                        "//button[. = 'Tenant portal']")
-        tenant_portal.click()
+        try:
+            modale = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,  "#navbar-select-magic")))
+            modale.click()
+            print('SUCCESS: Email option from modale clicked')
+        except:
+            print("FAILED: Email option from modale could not be clicked")
+            raise Exception
 
-    # 4. Click 'navbar-select-magic'
-        navbar_select_magic = self.driver.find_element(By.CSS_SELECTOR,
-                                              "#navbar-select-magic")
-        navbar_select_magic.click()
-
-     # 5. Click 'email'
-        email = self.driver.find_element(By.CSS_SELECTOR,
-                                "#navbar-magic-email")
-        email.click()
-
-    # 6. Type 'tenantav3@yopmail.com' in 'email'
-        email = self.driver.find_element(By.CSS_SELECTOR,
-                                "#navbar-magic-email")
-        email.send_keys("tenantav3@yopmail.com")
-
-    # 7. Click 'navbar-magic-next'
-        navbar_magic_next = self.driver.find_element(By.CSS_SELECTOR,
-                                            "#navbar-magic-next")
-        navbar_magic_next.click()
-
-    # 8. Switch to window '1'
-        self.driver.execute_script("window.open('http://www.yopmail.com', 'new window')")
-        self.driver.switch_to.window(self.driver.window_handles[1])
         
+        try:
+            emailbox = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,  "#navbar-magic-email")))
+            emailbox.click()
+            print('SUCCESS: email box clicked')
+        except:
+            print("FAILED: email box could not be clicked")
+            raise Exception
 
-    # 9. Navigate to 'https://yopmail.com/'
-        self.driver.get("https://yopmail.com/")
+        try:
+            email = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#navbar-magic-email")))
+            email.click()
+            clearTextField()
+            email.send_keys(variables.login_email)
+            print('SUCCESS: email entered successfully')
+        except:
+            print("FAILED: email could not be entered")
+            raise Exception
 
-    # 10. Click 'login'
-        login = self.driver.find_element(By.CSS_SELECTOR,
-                                "#login")
-        login.click()
+        try:
+            next_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,  "#navbar-magic-next")))
+            next_button.click()
+            print('SUCCESS:Next button clicked')
+        except:
+            print("FAILED:Next button could not be clicked")
+            raise Exception
 
-    # 11. Type 'tenantav3@yopmail.com' in 'login'
-        login = self.driver.find_element(By.CSS_SELECTOR,
-                                "#login")
-        login.send_keys("tenantav3@yopmail.com")
+        try:
+            if(wait.untill(EC.visibility_of_element_located(By.CLASS_NAME , 'loader-overlay'))):
+                print("yes")
+        except:
+            print
 
-    # 12. Send 'ENTER' key(s)
-        ActionChains(self.driver).send_keys(Keys.ENTER).perform()
 
-    # 13. Click 'Log in to Akru TestNet'
-    # Step switches frame driver context.
-        self.driver.switch_to.default_content()
-        self.driver.switch_to.frame(
-        self.driver.find_element(By.XPATH,
-                            "//*[@id = 'ifmail']|//*[@name = 'ifmail']|/html/body/div[1]/div/main/div[2]/div[3]/div/div[1]/iframe"))
-        log_in_to_akru_testnet = self.driver.find_element(By.XPATH,
-                                                 "//strong[. = 'Log in to Akru TestNet']")
-        log_in_to_akru_testnet.click()
+        # Login from yopmail
+        ym = yopmail(driver)
+        ym.run()
 
-    # 14. Switch to window '2'
-        self.driver.switch_to.window(self.driver.window_handles[2])
 
-    # 15. Switch to window '0'
-        self.driver.switch_to.window(self.driver.window_handles[0])
+        # try:
+        #     tenant_portal = wait.until(EC.element_to_be_clickable((By.XPATH,     "//button[. = 'Tenant portal']")))
+        #     tenant_portal.click()
+        #     print('SUCCESS:  clicked')
+        # except:
+        #     print("FAILED:  could not be clicked")
+        #     raise Exception
 
-    # 16. Is 'Dashboard' present?
-        dashboard = self.driver.find_element(By.CSS_SELECTOR,
-                                        "#navbar-header-sticky-dashboard")
-
-    # 17. Scroll window by ('0','554')
-        self.driver.execute_script("window.scrollBy(0,554)")
+        ym = yopmail(driver)
+        ym.run()
+        
         
         
         
