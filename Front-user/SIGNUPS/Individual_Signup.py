@@ -11,8 +11,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 import os
-from PIL import Image
-import allure
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
+#from PIL import Image
+#import allure
 
 class PythonOrgSearch(unittest.TestCase):
 
@@ -29,8 +31,8 @@ class PythonOrgSearch(unittest.TestCase):
         chrome_options.add_argument('--disable-dev-shm-using')
         # s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
         #s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
-        PATH = "chromedriver"
-        self.driver = webdriver.Chrome(PATH, options=chrome_options)
+        service = ChromeService(executable_path=ChromeDriverManager().install())
+        self.driver = webdriver.Chrome(service=service , options=chrome_options)
 
     def test_search_in_python_org(self):
         self.driver.maximize_window()
@@ -511,7 +513,7 @@ class PythonOrgSearch(unittest.TestCase):
         time.sleep(5)
         self.driver.save_screenshot("idsig.png")
         #screenshot = Image.open("idsig.png")
-        allure.attach.file(r"idsig.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
+        #allure.attach.file(r"idsig.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
         time.sleep(3)
         self.driver.quit()
 

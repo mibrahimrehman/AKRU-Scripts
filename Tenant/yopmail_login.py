@@ -12,7 +12,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 import os
-import allure
+#import allure
 import variables
 #from Login import PythonOrgSearch
 
@@ -21,6 +21,7 @@ class yopmail():
 
     def __init__(self , driver):
         self.driver = driver
+        print("instanace generated")
     
     def run(self):
         driver = self.driver
@@ -48,10 +49,10 @@ class yopmail():
 
             login.send_keys(variables.login_email)
             login.send_keys(Keys.ENTER)
-            print('SUCCESS: Email entered clicked')
+            print('SUCCESS: Email entered successfully')
             
         except:
-            print("FAILED:Email entered could not be clicked")
+            print("FAILED:Email could not be entered")
             raise Exception
 
         time.sleep(3)

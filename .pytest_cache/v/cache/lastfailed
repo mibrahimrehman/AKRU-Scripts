@@ -1,0 +1,5 @@
+{
+  "Front-user/SIGNUPS/test_pyt.py::TestStringMethods::test_isupper": true,
+  "Tenant/Login.py::PythonOrgSearch::test_search_in_python_org": true,
+  "Tenant/test_tenant_tp.py::TestTenant::test_tenant": true
+}

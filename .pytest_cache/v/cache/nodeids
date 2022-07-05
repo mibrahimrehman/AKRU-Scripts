@@ -1,0 +1,7 @@
+[
+  "Front-user/SIGNUPS/test_pyt.py::TestStringMethods::test_isupper",
+  "Front-user/SIGNUPS/test_pyt.py::TestStringMethods::test_split",
+  "Front-user/SIGNUPS/test_pyt.py::TestStringMethods::test_upper",
+  "Tenant/Login.py::PythonOrgSearch::test_search_in_python_org",
+  "Tenant/test_tenant_tp.py::TestTenant::test_tenant"
+]
