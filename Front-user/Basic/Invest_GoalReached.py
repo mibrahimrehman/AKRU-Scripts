@@ -8,6 +8,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
 import  allure
 
 class PythonOrgSearch(unittest.TestCase):
@@ -21,9 +23,11 @@ class PythonOrgSearch(unittest.TestCase):
         #comment at 19
         #s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
         # s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
-        PATH = "chromedriver"
+        service = ChromeService(executable_path=ChromeDriverManager().install())
+        self.driver = webdriver.Chrome(service=service , options=chrome_options)
+        
         #self.driver = webdriver.Firefox()
-        self.driver = webdriver.Chrome(PATH , options=chrome_options)
+        #self.driver = webdriver.Chrome(PATH , options=chrome_options)
 
     def test_search_in_python_org(self):
         self.driver.maximize_window()
