@@ -41,6 +41,7 @@ class test_invite(unittest.TestCase):
         fname = names.get_first_name()
         lname = names.get_last_name()
         email = fname + lname + '123@yopmail.com'
+        print("EMAIL generated for signup is: " , email)
         phone_no = '5678956789'
 
         action = ActionChains (self.driver)
@@ -272,7 +273,7 @@ class test_invite(unittest.TestCase):
         try:
             dobToBeEntered=wait.until(EC.element_to_be_clickable((By.ID,'date-picker-dialog')))
             dobToBeEntered.send_keys(Keys.BACKSPACE)
-            dobToBeEntered.send_keys('0')
+            dobToBeEntered.send_keys('25/07/2001')
             print('SUCCESS: Date of Birth is entered')
         except:
             print("FAILED: Could not enter date of birth")
@@ -334,9 +335,9 @@ class test_invite(unittest.TestCase):
 
 
         try:
-            stateToBeSelected=wait.until(EC.element_to_be_clickable((By.XPATH,'//select[@name="employmentStatus"]')))
+            stateToBeSelected=wait.until(EC.element_to_be_clickable((By.XPATH,'//div[@id="employmentStatus"]')))
             stateToBeSelected.click()
-            for option in self.driver.find_elements(By.XPATH, '//select[@name="employmentStatus"]//option[@value="unemployed"]'):
+            for option in self.driver.find_elements(By.XPATH, "//li[@data-value='unemployed']"):
                 #if option.text == 'Ohio'
                 if True:
                     option.click()
@@ -514,7 +515,7 @@ class test_invite(unittest.TestCase):
         time.sleep(5)
         self.driver.save_screenshot("idsig.png")
         screenshot = Image.open("idsig.png")
-        allure.attach.file(r"send_invite.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
+        allure.attach.file(r"idsig.png", "screenshot",attachment_type=allure.attachment_type.PNG)
         time.sleep(3)
         self.driver.quit()
 
