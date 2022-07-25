@@ -1,0 +1,16 @@
+
+SUCCESS: "https://avaxdev.akru.co" saved in webdriver
+SUCCESS: Login button clicked
+SUCCESS: User Portal button clicked
+SUCCESS: "Allow all cookies" button clicked
+SUCCESS: Magic button clicked
+SUCCESS: Email entered in magic modal
+SUCCESS: Magic next button clicked
+SUCCESS: Switched to YOPMAIL tab
+SUCCESS: Email entered in YOPMAIL input field
+SUCCESS: Switched to YOPMAIL iframe
+SUCCESS: "Log in to Akru TestNet" button clicked from YOPMAIL
+SUCCESS: Loader Disappeared
+SUCCESS: Toaster Appeared
+
+SUCCESS: SUCCESSFULLY LOGGED IN. New URL is https://avaxdev.akru.co/dashboard
