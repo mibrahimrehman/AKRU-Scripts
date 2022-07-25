@@ -159,74 +159,21 @@ class PythonOrgSearch(unittest.TestCase):
         #ym = yopmail(driver)
         #ym.run()
         time.sleep(5)
+        try:
+            moveoutbutton = wait.until(EC.presence_of_element_located((By.XPATH, "//button[@class='primary-btn'][text()='Send Request']")))
+            moveoutbutton.click()
+            print('SUCCESS: Move out request button clicked')
+        except:
+            print("FAILED: Move out request button not clicked")
+            raise Exception
 
-        # 27. Click 'Withdraw'
-        maintenance_ticket = driver.find_element(By.CSS_SELECTOR,
-                                             "#tomaintenanceticket")
-        maintenance_ticket.click()
-
-        # 46. Scroll window by ('0','148')
-        driver.execute_script("window.scrollBy(0,148)")
-
-        # 47. Click '​'
-        _ = driver.find_element(By.CSS_SELECTOR,
-                                "#mui-component-select-propertyId")
-        _.click()
-
-        # 48. Click 'bahria lodges'
-        bahria_lodges = driver.find_element(By.XPATH,
-                                            "//li[. = 'bahria lodges']")
-        bahria_lodges.click()
-
-        # 49. Click '​1'
-        _1 = driver.find_element(By.CSS_SELECTOR,
-                                "#mui-component-select-unitId")
-        _1.click()
-
-        # 50. Click '3'
-        _3 = driver.find_element(By.XPATH,
-                                "//li[. = '3']")
-        _3.click()
-
-        # 51. Click 'message'
-        message = driver.find_element(By.CSS_SELECTOR,
-                                    "[name='message']")
-        message.click()
-
-        # 52. Type 'maintenance ticket from tenantav3 ' in 'message'
-        message = driver.find_element(By.CSS_SELECTOR,
-                                    "[name='message']")
-        message.send_keys("maintenance ticket from tenantav3 ")
-
-        # 53. Click 'Generate Ticket'
-        generate_ticket = driver.find_element(By.XPATH,
-                                            "//button[. = ' Generate Ticket']")
-        generate_ticket.click()
-
-        # 54. Is 'DIV3' present?
-        div3 = driver.find_element(By.XPATH,
-                                "//body/div/div/div[1]/div/div")
-
-        # 55. Scroll window by ('0','-237')
-        driver.execute_script("window.scrollBy(0,-237)")
-
-        # 56. Scroll window by ('0','-8')
-        driver.execute_script("window.scrollBy(0,-8)")
-
-        # 57. Scroll window by ('0','-1')
-        driver.execute_script("window.scrollBy(0,-1)")
-
-
-
-        
-        time.sleep(5)
-        # try:
-        #     continuepayment = wait.until(EC.presence_of_element_located((By.XPATH, "//ul[@class='nav nav-tabs']")))
-        #     continuepayment.click()
-        #     print('SUCCESS: continue payment bank button clicked')
-        # except:
-        #     print("FAILED: continue payment bank button not clicked")
-        #     raise Exception
+        try:
+            confirmbutton = wait.until(EC.presence_of_element_located((By.XPATH, "//button[@class='primary-btn'][text()='Confirm']")))
+            confirmbutton.click()
+            print('SUCCESS: confirm button clicked successfully')
+        except:
+            print("FAILED: confirm button could not be clicked")
+            raise Exception
 
         # try:
         #     amount = wait.until(EC.presence_of_element_located((By.ID, 'outlined-error-helper-text')))

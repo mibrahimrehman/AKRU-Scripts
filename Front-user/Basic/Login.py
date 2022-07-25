@@ -9,6 +9,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import os
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
 import allure
 
 class PythonOrgSearch(unittest.TestCase):
@@ -25,9 +27,10 @@ class PythonOrgSearch(unittest.TestCase):
         # s = Service(executable_path=ChromeDriverManager().install())
         #s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
         
-        path = "chromedriver"
+        service = ChromeService(executable_path=ChromeDriverManager().install())
+        self.driver = webdriver.Chrome(service=service , options=chrome_options)
         # s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
-        self.driver = webdriver.Chrome(path, options=chrome_options)
+        #self.driver = webdriver.Chrome(path, options=chrome_options)
 
     def test_search_in_python_org(self):
         self.driver.maximize_window()

@@ -1,0 +1,27 @@
+Now i am in login
+SUCCESS: "https://avaxdev.akru.co/" saved in webdriver
+SUCCESS: Submit your property button clicked
+SUCCESS: Submit Your property button clicked
+SUCCESS: Start button clicked successfully
+SUCCESS: Office type button clicked successfully
+SUCCESS: Stabilized Income button clicked successfully
+SUCCESS: Address entered successfully
+SUCCESS: OK button clicked successfully
+SUCCESS: Zip Code entered successfully
+SUCCESS: OK button clicked successfully
+SUCCESS: Address entered successfully
+SUCCESS: OK button clicked successfully
+SUCCESS: Country entered successfully
+SUCCESS: OK button clicked successfully
+SUCCESS: First name entered successfully
+SUCCESS: OK button clicked successfully
+SUCCESS: Last name entered successfully
+SUCCESS: OK button clicked successfully
+SUCCESS: email entered successfully
+SUCCESS: OK button clicked successfully
+SUCCESS: Number entered successfully
+SUCCESS: Submit button clicked successfully
+SUCCESS: Toaster Appeared
+
+SUCCESS: Send Invite successfully. Toaster Appeared having text: "Successfully submitted property"
+

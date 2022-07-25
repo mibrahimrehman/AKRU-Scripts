@@ -1,0 +1,3 @@
+
+SUCCESS: "https://avaxdev.akru.co" saved in webdriver
+FAILED: Get Started button could not be clicked

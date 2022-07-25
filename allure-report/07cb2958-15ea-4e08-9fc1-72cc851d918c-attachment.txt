@@ -1,0 +1,13 @@
+SUCCESS: "https://avaxdevtenants.akru.co/" saved in webdriver
+SUCCESS: Get Started button clicked
+SUCCESS: Tenant portal option clicked
+SUCCESS: "Allow all cookies" button clicked
+SUCCESS: Email option from modale clicked
+SUCCESS: email box clicked
+SUCCESS: email entered successfully
+SUCCESS:Next button clicked
+FAILED: Loader did not open
+instanace generated
+SUCCESS: Email entered successfully
+SUCCESS: Switched to YOPMAIL iframe
+FAILED: Could not find "Log in to Akru TestNet" button.

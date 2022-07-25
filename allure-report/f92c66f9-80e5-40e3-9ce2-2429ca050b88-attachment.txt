@@ -1,0 +1,16 @@
+
+SUCCESS: "https://avaxdev.akru.co" saved in webdriver
+SUCCESS: Get Started button clicked
+SUCCESS: Yes selected for "Are you an accredited investor?"
+SUCCESS: Continue button clicked for "Are you an accredited investor?"
+SUCCESS: Select this plan button is clicked for starter packages
+SUCCESS: Select this plan button is clicked for investment plans
+SUCCESS: First name is entered
+SUCCESS: Last name is entered
+SUCCESS: Email is entered
+SUCCESS: Phone number is entered
+SUCCESS: To agree to AKRU's terms and privacy policy Checkbox clicked
+SUCCESS: Agree & Continue button clicked
+SUCCESS: 'Verify Your Email' modal appeared
+SUCCESS: Switched to YOPMAIL tab
+FAILED: Email could not be entered in YOPMAIL input field

@@ -65,9 +65,9 @@ class PythonOrgSearch(unittest.TestCase):
             action.send_keys(Keys.BACK_SPACE).perform()
 
 
-        self.driver.get(url)
+        driver.get(url)
         print('SUCCESS: "'+url+'" saved in webdriver')
-        wait = WebDriverWait(self.driver, 120)
+        wait = WebDriverWait(driver, 120)
 
         time.sleep(3)
         try:
@@ -160,10 +160,17 @@ class PythonOrgSearch(unittest.TestCase):
         #ym.run()
         time.sleep(5)
 
-        # 27. Click 'Withdraw'
-        maintenance_ticket = driver.find_element(By.CSS_SELECTOR,
-                                             "#tomaintenanceticket")
-        maintenance_ticket.click()
+        #Click Maintenance ticket
+        try:
+            maintenance_ticket = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR,  "#tomaintenanceticket")))
+            maintenance_ticket.click()
+            print('SUCCESS: Maintenance_ticket clicked successfully')
+        except:
+            print("FAILED: Maintenance_ticket could not be clicked successfully")
+            raise Exception
+        # maintenance_ticket = driver.find_element(By.CSS_SELECTOR,
+        #                                      "#tomaintenanceticket")
+        # maintenance_ticket.click()
 
         # 46. Scroll window by ('0','148')
         driver.execute_script("window.scrollBy(0,148)")
@@ -194,14 +201,25 @@ class PythonOrgSearch(unittest.TestCase):
         message.click()
 
         # 52. Type 'maintenance ticket from tenantav3 ' in 'message'
-        message = driver.find_element(By.CSS_SELECTOR,
-                                    "[name='message']")
-        message.send_keys("maintenance ticket from tenantav3 ")
+        try:
+            message = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "[name='message']")))
+            message.send_keys("maintenance ticket from tenantav3 ")
+            print('SUCCESS: Message entered successfully')
+        except:
+            print("FAILED: Message could not be entered")
+
 
         # 53. Click 'Generate Ticket'
-        generate_ticket = driver.find_element(By.XPATH,
-                                            "//button[. = ' Generate Ticket']")
-        generate_ticket.click()
+        try:
+            generate_ticket = wait.until(EC.presence_of_element_located((By.XPATH,"//button[. = ' Generate Ticket']")))
+            generate_ticket.click()
+            print('SUCCESS: Generate Ticket button clicked successfully')
+        except:
+            print("FAILED: Generate Ticket button could not be clicked")
+
+        # generate_ticket = driver.find_element(By.XPATH,
+        #                                     "//button[. = ' Generate Ticket']")
+        # generate_ticket.click()
 
         # 54. Is 'DIV3' present?
         div3 = driver.find_element(By.XPATH,
@@ -220,72 +238,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         
         time.sleep(5)
-        # try:
-        #     continuepayment = wait.until(EC.presence_of_element_located((By.XPATH, "//ul[@class='nav nav-tabs']")))
-        #     continuepayment.click()
-        #     print('SUCCESS: continue payment bank button clicked')
-        # except:
-        #     print("FAILED: continue payment bank button not clicked")
-        #     raise Exception
-
-        # try:
-        #     amount = wait.until(EC.presence_of_element_located((By.ID, 'outlined-error-helper-text')))
-        #     amount.click()
-        #     amount.send_keys("2000")
-        #     print('SUCCESS: amount text feild click')
-        # except:
-        #     print("FAILED: amount text feild not click")
-        #     raise Exception
         
-
-
-        # try:
-        #     amount = wait.until(EC.presence_of_element_located((By.XPATH, "//button[@class='primary-btn']")))
-        #     amount.click()
-        #     print('SUCCESS: pay and continue click')
-        # except:
-        #     print("FAILED: pay and continue not click")
-        #     raise Exception
-
-
-
-        # try:
-        #     amount = wait.until(EC.visibility_of_element_located((By.XPATH, "//div[@class='modal-content']")))
-            
-        #     print('SUCCESS: modale appeard')
-        # except:
-        #     print("FAILED:modale not appeard")
-        #     raise Exception
-
-
-        
-        # self.driver.execute_script("window.open('');")
-        # self.driver.switch_to.window(self.driver.window_handles[1])
-        # self.driver.get('https://avaxdevapi.akru.co/api/user/showOtp/'+ variables.login_email)
-        # otp = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/pre')))
-        # otp_array = list(otp.text)
-        # otp_code = otp_array[39] + otp_array[40] + \
-        #     otp_array[41] + otp_array[42]
-        
-        # self.driver.close()
-        # self.driver.switch_to.window(self.driver.window_handles[0])
-
-        # try:
-        #     otpt = wait.until(EC.presence_of_element_located((By.XPATH, "//input[@id='v1']")))
-        #     otpr.click()
-        #     otpt.send_keys(otp_code)
-        #     print('SUCCESS: otp code entered')
-        # except:
-        #     print("FAILED: otp code not entered")
-        #     raise Exception
-        # try:
-        #     amount = wait.until(EC.presence_of_element_located((By.ID, 'outlined-error-helper-text')))
-        #     amount.click()
-        #     amount.send_keys("2000")
-        #     print('SUCCESS: amount text feild click')
-        # except:
-        #     print("FAILED: amount text feild not click")
-        #     raise Exception
         
         
     def tearDown(self):

@@ -1,5 +1,6 @@
 from pickle import FALSE
 import unittest
+
 from selenium import webdriver
 import time
 import names
@@ -13,10 +14,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 import os
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
-#from PIL import Image
-#import allure
+from PIL import Image
+import allure
 
-class PythonOrgSearch(unittest.TestCase):
+class test_invite(unittest.TestCase):
 
     def setUp(self):
         WINDOW_SIZE = "1920,1080"
@@ -512,10 +513,10 @@ class PythonOrgSearch(unittest.TestCase):
     def tearDown(self):
         time.sleep(5)
         self.driver.save_screenshot("idsig.png")
-        #screenshot = Image.open("idsig.png")
-        #allure.attach.file(r"idsig.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
+        screenshot = Image.open("idsig.png")
+        allure.attach.file(r"send_invite.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
         time.sleep(3)
         self.driver.quit()
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()

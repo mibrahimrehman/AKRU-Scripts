@@ -23,7 +23,7 @@ import variables
 from chrome_setup import chrome
 
 
-class PythonOrgSearch(unittest.TestCase):
+class Test_login(unittest.TestCase):
     
     def setUp(self):
         # WINDOW_SIZE = "1920,1080"
@@ -47,12 +47,13 @@ class PythonOrgSearch(unittest.TestCase):
         self.driver = csk.get_driver()
         driverl = self.driver
 
-        self.test_search_in_python_org(self.driver)
+        self.test_search_in_python_org_login(self.driver)
 
         
 
-    def test_search_in_python_org(self , driver):
-        driver = self.driver
+    def test_search_in_python_org_login(self , gdriver):
+        print("Now i am in login")
+        driver = gdriver
         driver.maximize_window()
         url = variables.url
 
