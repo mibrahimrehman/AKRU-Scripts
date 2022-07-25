@@ -263,7 +263,7 @@ class PythonOrgSearch(unittest.TestCase):
         try:
             dobToBeEntered=wait.until(EC.element_to_be_clickable((By.ID,'date-picker-dialog')))
             dobToBeEntered.send_keys(Keys.BACKSPACE)
-            dobToBeEntered.send_keys('0')
+            dobToBeEntered.send_keys('25/07/2001')
             print('SUCCESS: Date of Birth is entered')
         except:
             print("FAILED: Could not enter date of birth")
@@ -438,9 +438,9 @@ class PythonOrgSearch(unittest.TestCase):
 
 
         try:
-            stateToBeSelected=wait.until(EC.element_to_be_clickable((By.XPATH,'//select[@name="employmentStatus"]')))
+            stateToBeSelected=wait.until(EC.element_to_be_clickable((By.XPATH,'//div[@id="employmentStatus"]')))
             stateToBeSelected.click()
-            for option in self.driver.find_elements(By.XPATH, '//select[@name="employmentStatus"]//option[@value="unemployed"]'):
+            for option in self.driver.find_elements(By.XPATH, "//li[@data-value='unemployed']"):
                 #if option.text == 'Ohio'
                 if True:
                     option.click()
