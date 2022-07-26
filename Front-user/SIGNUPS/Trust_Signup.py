@@ -38,6 +38,7 @@ class PythonOrgSearch(unittest.TestCase):
         fname = names.get_first_name()
         lname = names.get_last_name()
         email = fname + lname + '123@yopmail.com'
+        print("Email generated for signup is: " , email)
         phone_no = '5678956789'
         fnameRep = names.get_first_name()
         lnameRep = names.get_last_name()

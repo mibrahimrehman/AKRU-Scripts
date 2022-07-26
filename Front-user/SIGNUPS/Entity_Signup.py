@@ -54,7 +54,7 @@ class PythonOrgSearch(unittest.TestCase):
 
         self.driver.get(url)
         print('SUCCESS: "'+url+'" saved in webdriver')
-        wait = WebDriverWait(self.driver, 50)
+        wait = WebDriverWait(self.driver,150)
 
         time.sleep(3)
         try:
@@ -476,11 +476,20 @@ class PythonOrgSearch(unittest.TestCase):
             dobToBeEntered=wait.until(EC.element_to_be_clickable((By.ID,'date-picker-dialog')))
             dobToBeEntered.send_keys(Keys.BACKSPACE)
             dobToBeEntered.send_keys('25/07/2001')
+            print('SUCCESS: Date of Formation is entered')
+        except:
+            print("FAILED: Could not enter date of Formation")
+            raise Exception
+
+        try:
+            dobToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,"//label[text()='Date of Birth']/parent::*/child::div//input")))
+            dobToBeEntered.send_keys(Keys.BACKSPACE)
+            dobToBeEntered.send_keys('25/07/2001')
             print('SUCCESS: Date of Birth is entered')
         except:
             print("FAILED: Could not enter date of birth")
             raise Exception
-
+        
         try:
             time.sleep(10)
             continueButtonAfterStep2Completion=wait.until(EC.element_to_be_clickable((By.XPATH,'//button[@class="primary-btn mr-1"]')))
