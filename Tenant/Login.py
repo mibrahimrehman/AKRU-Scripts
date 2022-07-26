@@ -47,13 +47,13 @@ class Test_login(unittest.TestCase):
         self.driver = csk.get_driver()
         driverl = self.driver
 
-        self.test_search_in_python_org_login(self.driver)
+        #self.test_search_in_python_org_login(driverl)
 
         
 
-    def test_search_in_python_org_login(self , gdriver):
+    def test_search_in_python_org_login(self):
         print("Now i am in login")
-        driver = gdriver
+        driver = self.driver
         driver.maximize_window()
         url = variables.url
 
@@ -170,5 +170,5 @@ class Test_login(unittest.TestCase):
         time.sleep(3)
         self.driver.quit()
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()

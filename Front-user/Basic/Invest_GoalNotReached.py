@@ -28,9 +28,9 @@ class PythonOrgSearch(unittest.TestCase):
 
     def test_search_in_python_org(self):
         self.driver.maximize_window()
-        self.driver.get('chrome://settings/clearBrowserData')
-        time.sleep(10)
-        self.driver.find_element_by_xpath("//settings-ui").send_keys(Keys.ENTER)
+        #self.driver.get('chrome://settings/clearBrowserData')
+        #time.sleep(10)
+        #self.driver.find_element_by_xpath("//settings-ui").send_keys(Keys.ENTER)
         #keyboard.send("Enter")
 
         self.driver.delete_all_cookies()
