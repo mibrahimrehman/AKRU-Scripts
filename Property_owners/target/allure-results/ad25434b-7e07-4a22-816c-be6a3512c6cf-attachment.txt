@@ -1,0 +1,14 @@
+Now i am in login
+SUCCESS: "https://avaxdevowners.akru.co/" saved in webdriver
+SUCCESS: Email entered in email field
+SUCCESS: Verify button clicked successfully
+SUCCESS: iframe found and switched to it
+SUCCESS: email sended modal appeared
+instanace generated
+SUCCESS: Email entered successfully
+SUCCESS: Switched to YOPMAIL iframe
+SUCCESS: "Log in to Akru TestNet" button clicked from YOPMAIL
+SUCCESS: Log in successfully toaster appeared
+
+Toaster Appeared having text: "Successfully logged In!
+FAILED: Register Complain button could not be clicked successfully

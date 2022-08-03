@@ -89,13 +89,6 @@ class PythonOrgSearch(unittest.TestCase):
             print("FAILED: Select this plan button could not be clicked for starter packages")
             raise Exception
 
-        try:
-            investmentPlanSelect=wait.until(EC.element_to_be_clickable((By.XPATH,'//button[text()="Select this plan"]')))
-            investmentPlanSelect.click()
-            print('SUCCESS: Select this plan button is clicked for investment plans')
-        except:
-            print("FAILED: Select this plan button could not be clicked for investment plans")
-            raise Exception
 
         try:
             fnameToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,'//input[@name = "firstName"]')))
@@ -184,7 +177,7 @@ class PythonOrgSearch(unittest.TestCase):
             time.sleep(5)
 
             try:
-                self.driver.switch_to.frame('ifmail')
+                wait.until(EC.frame_to_be_available_and_switch_to_it((By.XPATH , "//iframe[@name='ifmail']")))
             except:
                 print("FAILED: Could not switch to iframe in YOPMAIL.")
                 raise Exception
@@ -305,6 +298,8 @@ class PythonOrgSearch(unittest.TestCase):
             addressToBeEntered.click()
             clearTextField()
             addressToBeEntered.send_keys('3825 Edwards Rd, #103, Cincinnati, OH 45209')
+            time.sleep(2)
+            addressToBeEntered.send_keys(Keys.RETURN)
             print('SUCCESS: Address is entered')
         except:
             print("FAILED: Address could not be entered")
@@ -475,7 +470,7 @@ class PythonOrgSearch(unittest.TestCase):
         try:
             dobToBeEntered=wait.until(EC.element_to_be_clickable((By.ID,'date-picker-dialog')))
             dobToBeEntered.send_keys(Keys.BACKSPACE)
-            dobToBeEntered.send_keys('25/07/2001')
+            dobToBeEntered.send_keys('11/07/2001')
             print('SUCCESS: Date of Formation is entered')
         except:
             print("FAILED: Could not enter date of Formation")
@@ -484,7 +479,7 @@ class PythonOrgSearch(unittest.TestCase):
         try:
             dobToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,"//label[text()='Date of Birth']/parent::*/child::div//input")))
             dobToBeEntered.send_keys(Keys.BACKSPACE)
-            dobToBeEntered.send_keys('25/07/2001')
+            dobToBeEntered.send_keys('11/07/2001')
             print('SUCCESS: Date of Birth is entered')
         except:
             print("FAILED: Could not enter date of birth")
@@ -588,6 +583,23 @@ class PythonOrgSearch(unittest.TestCase):
             raise Exception
 
         try:
+            checkingAgreement3=wait.until(EC.presence_of_element_located((By.XPATH,'//input[@name="point4"]')))
+            checkingAgreement3.click()
+            print('SUCCESS: Agreement 4 checked')
+        except:
+            print("FAILED: Agreement 4 could not be checked")
+            raise Exception
+
+        try:
+            checkingAgreement3=wait.until(EC.presence_of_element_located((By.XPATH,'//input[@name="point5"]')))
+            checkingAgreement3.click()
+            print('SUCCESS: Agreement 5 checked')
+        except:
+            print("FAILED: Agreement 5 could not be checked")
+            raise Exception
+
+
+        try:
             ContinueButtonAfterCheckingAgreements=wait.until(EC.element_to_be_clickable((By.XPATH,'//button[@class="primary-btn ml-auto d-block"]')))
             ContinueButtonAfterCheckingAgreements.click()
             print('SUCCESS: Continue button clicked after checking all 3 agreements')
@@ -654,7 +666,7 @@ class PythonOrgSearch(unittest.TestCase):
             time.sleep(5)
 
             try:
-                wait.until(EC.frame_to_be_available_and_switch_to_it('ifmail'))
+                wait.until(EC.frame_to_be_available_and_switch_to_it((By.XPATH , "//iframe[@name='ifmail']")))
                 #self.driver.switch_to.frame('ifmail')
             except:
                 print("FAILED: Could not switch to iframe in YOPMAIL.")

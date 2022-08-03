@@ -26,9 +26,9 @@ class yopmail():
     def run(self):
         driver = self.driver
         wait = WebDriverWait(self.driver, 120)
-        driver.get("http://www.yopmail.com")
-        #driver.execute_script("window.open('http://www.yopmail.com', 'new window')")
-        #driver.switch_to.window(self.driver.window_handles[1])
+
+        driver.execute_script("window.open('http://www.yopmail.com', 'new window')")
+        driver.switch_to.window(self.driver.window_handles[1])
 
 
 
@@ -47,7 +47,7 @@ class yopmail():
 
             login.clear()
 
-            login.send_keys(variables.signup_email)
+            login.send_keys(variables.emailhandler)
             login.send_keys(Keys.ENTER)
             print('SUCCESS: Email entered successfully')
             
@@ -68,18 +68,18 @@ class yopmail():
 
         try:
                 time.sleep(3)
-                LoginEmailButton=wait.until(EC.element_to_be_clickable((By.XPATH,'//b[text()="Verify Email"]')))
+                LoginEmailButton=wait.until(EC.element_to_be_clickable((By.XPATH,'//strong[text()="Log in to Akru TestNet"]')))
                 LoginEmailButton.click()
-                print('SUCCESS: "Verify Email" button clicked from YOPMAIL')
+                print('SUCCESS: "Log in to Akru TestNet" button clicked from YOPMAIL')
         except:
-                print('FAILED: Could not find "Verify Email" button.')
+                print('FAILED: Could not find "Log in to Akru TestNet" button.')
                 raise Exception
 
 
 
+        time.sleep(10)
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
         time.sleep(5)
-
-        #driver.switch_to.window(driver.window_handles[2])
-
-    # 15. Switch to window '0'
-       # driver.switch_to.window(driver.window_handles[0])

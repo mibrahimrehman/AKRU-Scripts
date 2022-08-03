@@ -35,9 +35,9 @@ pip install -r ./requirements.txt
 
 ## Run as console script
 
-```bash
+<!-- ```bash
 python ./combine.py ./some/path/to/allure/generated/folder
-```
+``` -->
 
 ## Import and use in python code
 

@@ -34,7 +34,7 @@ class PythonOrgSearch(unittest.TestCase):
         afterLoginURL = 'https://avaxdev.akru.co/dashboard'
         email = "ib_automation_seller@yopmail.com"
         wait = WebDriverWait(self.driver, 10)
-
+        
         self.driver.get(url)
         print('SUCCESS: "'+url+'" saved in webdriver')
 

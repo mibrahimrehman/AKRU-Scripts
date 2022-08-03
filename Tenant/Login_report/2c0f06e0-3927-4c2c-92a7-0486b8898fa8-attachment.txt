@@ -11,5 +11,4 @@ FAILED: Loader did not open
 instanace generated
 SUCCESS: Email entered successfully
 SUCCESS: Switched to YOPMAIL iframe
-SUCCESS: "Log in to Akru TestNet" button clicked from YOPMAIL
-SUCCESS: Log in successfully toaster appeared
+FAILED: Could not find "Log in to Akru TestNet" button.

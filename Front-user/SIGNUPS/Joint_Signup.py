@@ -15,7 +15,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from PIL import Image
 import allure
-from sqlalchemy import TIME
+#from sqlalchemy import TIME
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
@@ -43,6 +43,8 @@ class PythonOrgSearch(unittest.TestCase):
         lnamePartner = names.get_last_name()
         emailPartner = fnamePartner+lnamePartner+'123@yopmail.com'
         phone_no2 = '5678956788'
+
+        print(" Email generated for joint signup: " , email)
 
         action = ActionChains (self.driver)
         def clearTextField():
@@ -88,13 +90,7 @@ class PythonOrgSearch(unittest.TestCase):
             print("FAILED: Select this plan button could not be clicked for starter packages")
             raise Exception
 
-        try:
-            investmentPlanSelect=wait.until(EC.element_to_be_clickable((By.XPATH,'//button[text()="Select this plan"]')))
-            investmentPlanSelect.click()
-            print('SUCCESS: Select this plan button is clicked for investment plans')
-        except:
-            print("FAILED: Select this plan button could not be clicked for investment plans")
-            raise Exception
+        
 
         try:
             fnameToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,'//input[@name = "firstName"]')))
@@ -182,7 +178,7 @@ class PythonOrgSearch(unittest.TestCase):
             time.sleep(5)
 
             try:
-                self.driver.switch_to.frame('ifmail')
+                wait.until(EC.frame_to_be_available_and_switch_to_it((By.XPATH , "//iframe[@name='ifmail']")))
             except:
                 print("FAILED: Could not switch to iframe in YOPMAIL.")
                 raise Exception
@@ -222,7 +218,9 @@ class PythonOrgSearch(unittest.TestCase):
             addressToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,'//input[@name="address"]')))
             addressToBeEntered.click()
             clearTextField()
-            addressToBeEntered.send_keys('3825 Edwards Rd, #103, Cincinnati, OH 45209')
+            addressToBeEntered.send_keys('3825 Edwards Rd #103, Cincinnati, OH 45244, USA')
+            time.sleep(2)
+            addressToBeEntered.send_keys(Keys.RETURN)
             print('SUCCESS: Address is entered')
         except:
             print("FAILED: Address could not be entered")
@@ -263,7 +261,7 @@ class PythonOrgSearch(unittest.TestCase):
         try:
             dobToBeEntered=wait.until(EC.element_to_be_clickable((By.ID,'date-picker-dialog')))
             dobToBeEntered.send_keys(Keys.BACKSPACE)
-            dobToBeEntered.send_keys('25/07/2001')
+            dobToBeEntered.send_keys('11/07/2001')
             print('SUCCESS: Date of Birth is entered')
         except:
             print("FAILED: Could not enter date of birth")
@@ -388,9 +386,9 @@ class PythonOrgSearch(unittest.TestCase):
             raise Exception
 
         try:
-            doboOfPartnerToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,'//div[17]//input')))
+            doboOfPartnerToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,"//div[19]//div//div//input")))
             doboOfPartnerToBeEntered.send_keys(Keys.BACKSPACE)
-            doboOfPartnerToBeEntered.send_keys('0')
+            doboOfPartnerToBeEntered.send_keys('11/07/2001')
             print('SUCCESS: Date of Birth of Partner is entered')
         except:
             print("FAILED: Date of Birth of Partner could not be entered")
@@ -489,6 +487,22 @@ class PythonOrgSearch(unittest.TestCase):
             raise Exception
 
         try:
+            checkingAgreement3=wait.until(EC.presence_of_element_located((By.XPATH,'//input[@name="point4"]')))
+            checkingAgreement3.click()
+            print('SUCCESS: Agreement 4 checked')
+        except:
+            print("FAILED: Agreement 4 could not be checked")
+            raise Exception
+
+        try:
+            checkingAgreement3=wait.until(EC.presence_of_element_located((By.XPATH,'//input[@name="point5"]')))
+            checkingAgreement3.click()
+            print('SUCCESS: Agreement 5 checked')
+        except:
+            print("FAILED: Agreement 5 could not be checked")
+            raise Exception
+
+        try:
             ContinueButtonAfterCheckingAgreements=wait.until(EC.element_to_be_clickable((By.XPATH,'//button[@class="primary-btn ml-auto d-block"]')))
             ContinueButtonAfterCheckingAgreements.click()
             print('SUCCESS: Continue button clicked after checking all 3 agreements')
@@ -556,7 +570,7 @@ class PythonOrgSearch(unittest.TestCase):
             time.sleep(5)
 
             try:
-                self.driver.switch_to.frame('ifmail')
+                wait.until(EC.frame_to_be_available_and_switch_to_it((By.XPATH , "//iframe[@name='ifmail']")))
             except:
                 print("FAILED: Could not switch to iframe in YOPMAIL.")
                 raise Exception
