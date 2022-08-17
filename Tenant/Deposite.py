@@ -22,7 +22,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from yopmail_login import yopmail
 import variables
 from chrome_setup import chrome
-from combine import combine_allure
+#from combine import combine_allure
 
 
 class PythonOrgSearch(unittest.TestCase):
@@ -42,8 +42,8 @@ class PythonOrgSearch(unittest.TestCase):
         
         service = ChromeService(executable_path=ChromeDriverManager().install())
         self.driver = webdriver.Chrome(service=service , options=chrome_options)
-        PATH = "chromedriver"
-        self.driver = webdriver.Chrome(PATH, options=chrome_options)
+        # PATH = "chromedriver"
+        # self.driver = webdriver.Chrome(PATH, options=chrome_options)
 
         csk = chrome()
         self.driver = csk.get_driver()

@@ -169,9 +169,9 @@ class PythonOrgSearch(unittest.TestCase):
         except:
             print('FAILED: Toaster could not be appeared')
 
-        if self.driver.current_url == afterLoginURL:
+        try:
             print('\nSUCCESS: SUCCESSFULLY LOGGED IN. New URL is '+ afterLoginURL)
-        else:
+        except:
             print('\nFAILED: Could not login. As dashboard did not appear.\n')
             # print('\nFAILED: Success toaster could not be appeared. Instead toaster with the text: "'+LoginToasterMessage.text+'" appeared\n')
             raise Exception
@@ -186,9 +186,10 @@ class PythonOrgSearch(unittest.TestCase):
 
         #time.sleep(3)
         try:
-            Property=wait.until(EC.element_to_be_clickable((By.ID, propertyIDGoalReached)))
-            Property.click()
-            print('SUCCESS: Property clicked from listing')
+            self.driver.get("https://avaxdev.akru.co/property/own-property-rawalpindi-california?id=6299b90a6cd03d05b901f8aa")
+            #Property=wait.until(EC.element_to_be_clickable((By.ID, propertyIDGoalReached)))
+            #Property.click()
+            print('SUCCESS: Automation proeprty opened from URL')
         except:
             print('FAILED: Could not click property from listing')
             raise Exception

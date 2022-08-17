@@ -12,6 +12,7 @@ import os
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 import allure
+from selenium.webdriver.common.action_chains import ActionChains
 
 class PythonOrgSearch(unittest.TestCase):
     def setUp(self):
@@ -24,8 +25,6 @@ class PythonOrgSearch(unittest.TestCase):
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--start-maximized')
         chrome_options.add_argument('--disable-setuid-sandbox')
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--disable-gpu')
         # s = Service(executable_path=ChromeDriverManager().install())
         #s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
         
@@ -167,12 +166,125 @@ class PythonOrgSearch(unittest.TestCase):
             # print('\nFAILED: Success toaster could not be appeared. Instead toaster with the text: "'+LoginToasterMessage.text+'" appeared\n')
             raise Exception
 
+        
+
+        try:
+                time.sleep(3)
+                LoginEmailButton=wait.until(EC.element_to_be_clickable((By.XPATH,'//a[@id="toWallet"]')))
+                LoginEmailButton.click()
+                print('SUCCESS: Wallet button clicked successfully')
+        except:
+                print('FAILED: Wallet button could not be clicked.')
+                raise Exception
+
+        time.sleep(5)
+        self.driver.execute_script("window.scrollBy(0,91)")
+
+    # 27. Scroll window by ('0','70')
+        self.driver.execute_script("window.scrollBy(0,70)")
+
+        # 28. Click 'Continue Payment'
+        # continue_payment = self.driver.find_element(By.CSS_SELECTOR,
+        #                                     "#toBankAccount")
+        # continue_payment.click()
+
+        try:
+            time.sleep(3)
+            paybox=wait.until(EC.element_to_be_clickable((By.XPATH,"//span[text()='Withdraw']")))
+            paybox.click()
+            time.sleep(3)
+            paybox=wait.until(EC.element_to_be_clickable((By.XPATH,"//span[text()='Withdraw']")))
+            paybox.click()
+            print('SUCCESS: Withdraw tab clicked successfully')
+        except:
+                print('FAILED: Withdraw tab could not be clicked.')
+                raise Exception
+        
+        try:
+            amountfeild=wait.until(EC.element_to_be_clickable((By.XPATH,"//div//input[@name='amount']")))
+            time.sleep(3)
+            amountfeild=wait.until(EC.element_to_be_clickable((By.XPATH,"//div//input[@name='amount']")))
+            amountfeild.click()
+            amountfeild.send_keys("1000")
+            print('SUCCESS: Deposit Amount entered successfully')
+        except:
+            print("FAILED: Deposit Amount could not be entered successfully")
+            raise Exception
+
+        try:
+            amountfeild=wait.until(EC.element_to_be_clickable((By.XPATH,"//button[text()='Withdraw']"))).click()
+            #amountfeild.click()
+            print('SUCCESS: Withdraw button clicked successfully')
+        except:
+            print("FAILED: Withdraw button could not be clicked successfully")
+            raise Exception
+
+
+        time.sleep(4)
+
+        self.driver.execute_script("window.open('');")
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        self.driver.get('https://avaxdevapi.akru.co/api/user/showOtp/'+ email)
+        otp = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/pre')))
+        otp_array = list(otp.text)
+        otp_code = otp_array[39] + otp_array[40] + \
+            otp_array[41] + otp_array[42]
+        
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
+
+        # 33. Click 'v1'
+        v1 = self.driver.find_element(By.CSS_SELECTOR,
+                                "#v1")
+        v1.click()
+
+        # 34. Type '0' in 'v1'
+        v1 = self.driver.find_element(By.CSS_SELECTOR,
+                                "#v1")
+        v1.send_keys(otp_code[0])
+
+        # 35. Type '0' in 'v2'
+        v2 = self.driver.find_element(By.CSS_SELECTOR,
+                                "#v2")
+        v2.send_keys(otp_code[1])
+
+        # 36. Type '0' in 'v3'
+        v3 = self.driver.find_element(By.CSS_SELECTOR,
+                                "#v3")
+        v3.send_keys(otp_code[2])
+
+        # 37. Type '0' in 'v4'
+        v4 = self.driver.find_element(By.CSS_SELECTOR,
+                                "#v4")
+        v4.send_keys(otp_code[3])
+
+        # 38. Click 'AUTHORIZE'
+        authorize = self.driver.find_element(By.XPATH,
+                                        "//button[. = 'Authorize']")
+    
+        authorize.click()
+
+        try:
+            LoginToasterMessage = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'Toastify__toast-body')))
+            print('SUCCESS: Deposit successfully toaster appeared')
+        except:
+            print("FAILED: Toaster could not appeared")
+            raise Exception
+        time.sleep(5)
+
+        try:
+            print('\nToaster Appeared having text: "'+LoginToasterMessage.text+'"\n')
+        except:
+            print('\nFAILED: Success toaster could not be appeared. Instead toaster with the text: "'+LoginToasterMessage.text+'" appeared\n')
+            raise Exception
+
+
     def tearDown(self):
         time.sleep(3)
-        self.driver.save_screenshot("login.PNG")
-        allure.attach.file(r"login.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
-        time.sleep(3)
-        self.driver.quit()
+        # self.driver.save_screenshot("login.PNG")
+        # allure.attach.file(r"login.PNG", "screenshot",attachment_type=allure.attachment_type.PNG)
+        # time.sleep(3)
+        # self.driver.quit()
 
 if __name__ == "__main__":
     unittest.main()

@@ -218,7 +218,7 @@ class PythonOrgSearch(unittest.TestCase):
             addressToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,'//input[@name="address"]')))
             addressToBeEntered.click()
             clearTextField()
-            addressToBeEntered.send_keys('3825 Edwards Rd #103, Cincinnati, OH 45244, USA')
+            addressToBeEntered.send_keys('3825 Edwards Rd, #103, Cincinnati, OH 45209')
             time.sleep(2)
             addressToBeEntered.send_keys(Keys.RETURN)
             print('SUCCESS: Address is entered')

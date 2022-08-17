@@ -177,9 +177,10 @@ class PythonOrgSearch(unittest.TestCase):
 
         time.sleep(3)
         try:
-            Property=wait.until(EC.element_to_be_clickable((By.ID, propertyIDGoalNotReached)))
-            Property.click()
-            print('SUCCESS: Property clicked from listing')
+            #Property=wait.until(EC.element_to_be_clickable((By.ID, propertyIDGoalNotReached)))
+            #Property.click()
+            self.driver.get("https://avaxdev.akru.co/property/own-property-rawalpindi-california?id=62b565f5659bb93d76ad0d68")
+            print('SUCCESS: Automation Property clicked from URL')
         except:
             print('FAILED: Could not click property from listing')
             raise Exception
@@ -194,6 +195,16 @@ class PythonOrgSearch(unittest.TestCase):
             raise Exception
 
         time.sleep(5)
+
+        
+        try:
+            BuyTokensButton=wait.until(EC.presence_of_element_located((By.XPATH, "//input[@type='checkbox']")))
+            BuyTokensButton.click()
+            print('SUCCESS: I understand checkbox button is clicked')
+        except:
+            print('FAILED: I understand Checkbox Could not clicked')
+            raise Exception
+        
         try:
             BuyTokensButton=wait.until(EC.element_to_be_clickable((By.ID, 'singleProperty-modal-buyToken')))
             BuyTokensButton.click()
