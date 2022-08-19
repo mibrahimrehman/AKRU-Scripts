@@ -17,15 +17,15 @@ class PythonOrgSearch(unittest.TestCase):
     def setUp(self):
         WINDOW_SIZE = "1920,1080"
         chrome_options = Options()
-        # chrome_options.add_argument("--headless")
-        # chrome_options.add_argument("--disable-gpu")
-        # chrome_options.add_argument("--disable-popup-blocking")
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-popup-blocking")
         chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--start-maximized')
+
         chrome_options.add_argument('--disable-setuid-sandbox')
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--disable-gpu')
+
         # s = Service(executable_path=ChromeDriverManager().install())
         #s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
         
