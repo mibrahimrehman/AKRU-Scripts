@@ -1,5 +1,0 @@
-[WDM] - ====== WebDriver manager ======
-[WDM] - Current google-chrome version is 103.0.5060
-[WDM] - Get LATEST chromedriver version for 103.0.5060 google-chrome
-[WDM] - About to download new driver from https://chromedriver.storage.googleapis.com/103.0.5060.134/chromedriver_mac64.zip
-[WDM] - Driver has been saved in cache [/Users/asadullahkhan/.wdm/drivers/chromedriver/mac64/103.0.5060.134]

@@ -40,7 +40,7 @@ class PythonOrgSearch(unittest.TestCase):
         TokenSymbol = 'AK-EX03'
         PriceOfTokensToBeListedd = "1200"
         QuantityOfTokensToBeListedd = "1"
-        wait = WebDriverWait(self.driver, 100)
+        wait = WebDriverWait(self.driver, 120)
         #comment
 
         self.driver.get(url)

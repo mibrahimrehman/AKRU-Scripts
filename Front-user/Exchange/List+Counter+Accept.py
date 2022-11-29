@@ -11,9 +11,11 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 import allure
-import win32ui
-import win32con
-import goto
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
+#import win32ui
+#import win32con
+#import goto
 #from goto import label
 
 class PythonOrgSearch(unittest.TestCase):
@@ -26,8 +28,10 @@ class PythonOrgSearch(unittest.TestCase):
         chrome_options.add_argument('--no-sandbox')
         # s = Service('/home/ubuntu/script/pipeline/test/chromdriver/chromedriver')
         #s = Service('/Users/qualityassurance/Desktop/automation-scripts/AVAXDEV_SHAHWAR/chromedriver')
-        PATH = "chromedriver"
-        self.driver = webdriver.Chrome(PATH, options=chrome_options)
+        # PATH = "chromedriver"
+        # self.driver = webdriver.Chrome(PATH, options=chrome_options)
+        service = ChromeService(executable_path=ChromeDriverManager().install())
+        self.driver = webdriver.Chrome(service=service , options=chrome_options)
 
     def test_search_in_python_org(self):
         self.driver.maximize_window()
@@ -159,12 +163,12 @@ class PythonOrgSearch(unittest.TestCase):
             print('SUCCESS: Toaster Appeared')
         except:
             print('FAILED: Toaster could not be appeared')
-            response = win32ui.MessageBox("Would like to wait more?", "Loading", win32con.MB_YESNOCANCEL)
-            if response == win32con.IDYES:
-                print("yes wait")
-                time.sleep(100)
-            elif response == win32con.IDNO:
-                print("No wait")
+            # response = win32ui.MessageBox("Would like to wait more?", "Loading", win32con.MB_YESNOCANCEL)
+            # if response == win32con.IDYES:
+            #     print("yes wait")
+            #     time.sleep(100)
+            # elif response == win32con.IDNO:
+            #     print("No wait")
 
 
 
@@ -488,13 +492,13 @@ class PythonOrgSearch(unittest.TestCase):
             CounterOfferPlacedSuccessfullyToasterMessage.click()
         else:
             print('\nFAILED: Counter offer placed successfully toaster could not be appeared. Instead toaster with the text: "'+CounterOfferPlacedSuccessfullyToasterMessage.text+'" appeared\n')
-            response = win32ui.MessageBox("Do you want to retry counter", "Trouble", win32con.MB_YESNO)
-            if response == win32con.IDYES:
-                print("retry from counter")
-                self.driver.refresh()
-            elif response == win32con.IDNO:
-                print("You pressed no")
-                raise Exception
+            # response = win32ui.MessageBox("Do you want to retry counter", "Trouble", win32con.MB_YESNO)
+            # if response == win32con.IDYES:
+            #     print("retry from counter")
+            #     self.driver.refresh()
+            # elif response == win32con.IDNO:
+            #     print("You pressed no")
+            #     raise Exception
 
         time.sleep(3)
         try:

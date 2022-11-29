@@ -37,7 +37,7 @@ class test_invite(unittest.TestCase):
 
     def test_search_in_python_org(self):
         self.driver.maximize_window()
-        url = "https://avaxdev.akru.co"
+        url = "https://postdev.akru.co/"
         fname = names.get_first_name()
         lname = names.get_last_name()
         email = fname + lname + '123@yopmail.com'
@@ -87,11 +87,11 @@ class test_invite(unittest.TestCase):
         except:
             print("FAILED: Select this plan button could not be clicked for starter packages")
             raise Exception
-
+            
 
         try:
             fnameToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,'//input[@name = "firstName"]')))
-            fnameToBeEntered.send_keys(fname)
+            fnameToBeEntered.send_keys("ibrahim")
             print('SUCCESS: First name is entered')
         except:
             print("FAILED: First name could not be entered")
@@ -99,7 +99,7 @@ class test_invite(unittest.TestCase):
 
         try:
             lnameToBeEntered=wait.until(EC.element_to_be_clickable((By.XPATH,'//input[@name = "lastName"]')))
-            lnameToBeEntered.send_keys(lname)
+            lnameToBeEntered.send_keys("rehman")
             print('SUCCESS: Last name is entered')
         except:
             print("FAILED: Last name could not be entered")
@@ -248,7 +248,7 @@ class test_invite(unittest.TestCase):
         time.sleep(10)
         self.driver.execute_script("window.open('');")
         self.driver.switch_to.window(self.driver.window_handles[1])
-        self.driver.get('https://avaxdevapi.akru.co/api/user/showOtp/'+email)
+        self.driver.get('https://postdevapi.akru.co/api/user/showOtp/'+email)
         otp = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/pre')))
         otp_array = list(otp.text)
         otp_code = otp_array[39] + otp_array[40] + \
