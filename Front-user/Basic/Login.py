@@ -23,7 +23,7 @@ class PythonOrgSearch(unittest.TestCase):
         chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--start-maximized')
-
+        #comment
         chrome_options.add_argument('--disable-setuid-sandbox')
 
         # s = Service(executable_path=ChromeDriverManager().install())
